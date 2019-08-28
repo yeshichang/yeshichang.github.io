@@ -1,307 +1,251 @@
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
-
-  
-  <title>个人博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="og:type" content="website">
 <meta property="og:title" content="个人博客">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="个人博客">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人博客">
-  
-    <link rel="alternate" href="/atom.xml" title="个人博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>个人博客</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
 </head>
-</html>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">个人博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">欢迎来到我的博客</a>
-        </h2>
-      
+
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
+  
+    <div id="title">
+      <h1>个人博客</h1>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">Home</a></li>
+       
+        <li><a href="/about/">About</a></li>
+       
+        <li><a href="/archives/">Writing</a></li>
+       
+        <li><a href="/projects_url">Projects</a></li>
+      
+    </ul>
   </div>
 </header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-iOS-ImageView-contentMode-图片填充模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/12/iOS-ImageView-contentMode-图片填充模式/" class="article-date">
-  <time datetime="2019-07-12T10:37:09.000Z" itemprop="datePublished">2019-07-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+
         
+        <section id="about">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/12/iOS-ImageView-contentMode-图片填充模式/">iOS ImageView contentMode 图片填充模式</a>
-    </h1>
   
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>摘要：</strong> <code>UIImageView</code>的<code>contentMode</code>这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于<code>imageViewUIViewContentModeScaleToFill</code>,&lt;默认属性,图片根据imageView大小显示,会使图片变形&gt;根据视图的比例去拉伸图片内容<code>UIViewContentModeScaleAspectFit</code>,//contentsscaledtofitwithfixedaspect.remainde<br><code>UIImageView</code>的<code>contentMode</code>这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于imageView</p>
-<p><code>UIViewContentModeScaleToFill</code>,&lt;默认属性,图片根据imageView大小显示,会使图片变形&gt;</p>
-<p>根据视图的比例去拉伸图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-b5ee394ed2760978.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeScaleAspectFit</code>,/ /contents scaled to fit with fixed aspect. remainder is transparent (内容符合固定的方面。剩余部分是透明的)</p>
-<p>&lt;图片根据自身比例进行显示,图片小于imageView的部分会透明显示&gt;<br>保持图片内容的纵横比例,来适应视图的大小<br><img src="https://upload-images.jianshu.io/upload_images/2917199-70b4db65bce15fd5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeScaleAspectFill</code>,// contents scaled to fill with fixed aspect. some portion of content may be clipped.&lt;内容扩展填充固定方面。部分内容可能剪。&gt;</p>
-<p>&lt;图片按imageView大小比例居中显示,图片可能会失真并且不会显示完整,只显示中间部分&gt;</p>
-<p>用图片内容来填充视图的大小,多余得部分可以被修剪掉来填充整个视图边界<br><img src="https://upload-images.jianshu.io/upload_images/2917199-3d8ba8c9575f8530.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeRedraw</code>,// redraw on bounds change (calls - setNeedsDisplay) &lt;重划边界变化(重设 - setNeedsDisplay)&gt;</p>
-<p>这个选项是单视图的尺寸位置发生变化的时候通过调用setNeedsDisplay方法来重新显示<br><img src="https://upload-images.jianshu.io/upload_images/2917199-e184a3eeb3aae30e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p><code>UIViewContentModeCenter</code>,// contents remain same size. positioned adjusted.&lt;内容保持相同大小。定位调整&gt;</p>
-<p>保持图片原比例在视图中间显示图片内容,如果视图大小小于图片的尺寸,则图片会超出视图边界,下面类同<br><img src="https://upload-images.jianshu.io/upload_images/2917199-cc66f48aa59d4236.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeTop</code>,</p>
-<p>保持图片原比例在视图中间顶部显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-aef63a33d5451399.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeBottom</code>,</p>
-<p>保持图片原比例在视图中间底部显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-8615e13261bfe920.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeLeft</code>,</p>
-<p>保持图片原比例在视图中间左边显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-02343d8c318dc810.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeRight</code>,</p>
-<p>保持图片原比例在视图中间右边显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-fd0b48cae665f029.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeTopLeft</code>,</p>
-<p>保持图片原比例在视图左上角显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-07a77b7e25154f5a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeTopRight</code>,</p>
-<p>保持图片原比例在视图右上角显示图片内容</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2917199-6e92311595abffe0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeBottomLeft</code>,</p>
-<p>保持图片原比例在视图左下角显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-cad04eacfbf601e8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeBottomRight</code>,</p>
-<p>保持图片原比例在视图右下角显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-0a5292acbde4ab00.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/" data-id="cjy3yrfiu0002i3qdxqovgwhn" class="article-share-link">Share</a>
+    <p>
+      Find me on
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-iOS八种更新方式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/12/iOS八种更新方式/" class="article-date">
-  <time datetime="2019-07-12T09:30:13.000Z" itemprop="datePublished">2019-07-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/12/iOS八种更新方式/">iOS八种更新方式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、JSPatch"><a href="#一、JSPatch" class="headerlink" title="一、JSPatch"></a>一、JSPatch</h3><p>热更新时，从服务器拉去js脚本。理论上可以修改和新建所有的模块，但是不建议这样做。</p>
-<p>建议 用来做紧急的小需求和 修复严重的线上bug。</p>
-<h3 id="二、lua脚本"><a href="#二、lua脚本" class="headerlink" title="二、lua脚本"></a>二、lua脚本</h3><p>比如： wax。热更新时，从服务器拉去lua脚本。游戏开发经常用到。</p>
-<h3 id="三、Weex"><a href="#三、Weex" class="headerlink" title="三、Weex"></a>三、Weex</h3><p>跨平台，一套代码，iOS、Android都可以运行。用前端语法实现原生效果。比React Native更好用。</p>
-<p>weex基于vue.js，ReactNative使用React。</p>
-<p>ReactNative安装配置麻烦。 weex安装cli之后就可以使用。</p>
-<p>react模板JSX有一定的学习成本，vue和常用的web开发类似，模板是普通的html，数据绑定用mustache风格，样式直接使用css。</p>
-<p>淘宝干的漂亮，中国在编码的实力越来越牛叉了。威武！！！ </p>
-<h3 id="四、React-Native"><a href="#四、React-Native" class="headerlink" title="四、React Native"></a>四、React Native</h3><p>不像Weex能一套代码多端运行，需要自己分别做修改。</p>
-<p>React Native 可以动态添加业务模块，但无法做到修改原生OC代码。</p>
-<p>JSPatch、lua 配合React Native可以让一个原生APP时刻处于可扩展可修改的状态。</p>
-<h3 id="五、Hybrid"><a href="#五、Hybrid" class="headerlink" title="五、Hybrid"></a>五、Hybrid</h3><p>像PhoneGap之类的框架, 基本概念和web差不多, 通过更新js/html来实现动态化，没有原生的效果流畅。</p>
-<h3 id="六、动态库"><a href="#六、动态库" class="headerlink" title="六、动态库"></a>六、动态库</h3><p>可以做demo用，真实使用的时候会被苹果禁止。</p>
-<p>因为 打包发到AppStore的ipa安装包 里的每个动态库 都有唯一的编码，iOS系统会进行验证，所以动态通过网络获取 新的动态库 也用不了。</p>
-<h3 id="七、rollout-io"><a href="#七、rollout-io" class="headerlink" title="七、rollout.io"></a>七、rollout.io</h3><p>Rollout紧急修复线上bug。后端有相关的管理页面。因为是国外的网站，然后呢，要FQ才能使用。</p>
-<h3 id="八、DynamicCocoa"><a href="#八、DynamicCocoa" class="headerlink" title="八、DynamicCocoa"></a>八、DynamicCocoa</h3><p>滴滴iOS的一个框架，准备在2017年初开源，与JSPatch比更加智能化，用OC在XCode中写完代码，用工具可以自动生成可以更新的js文件。</p>
-<p><a href="http://www.cnblogs.com/dahe007/p/6253204.html" target="_blank" rel="noopener">转自 iOS热更新-8种实现方式</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/12/iOS八种更新方式/" data-id="cjy3yrfir0001i3qdfszortk6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/12/hello-world/" class="article-date">
-  <time datetime="2019-07-12T08:30:31.005Z" itemprop="datePublished">2019-07-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          <a class="icon" target="_blank" href="http://github.com/probberechts/cactus-dark">
+            <i class="fab fa-github"></i><!--
+      ---></a><!--
+    ---><!--
+    --->, 
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/12/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        
+          <a class="icon" target="_blank" href="/">
+            <i class="fab fa-twitter"></i><!--
+      ---></a><!--
+    ---><!--
+    --->, 
+        
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/12/hello-world/" data-id="cjy3yrfim0000i3qddi2ke7vu" class="article-share-link">Share</a>
+        
+          <a class="icon" target="_blank" href="/">
+            <i class="fab fa-facebook"></i><!--
+      ---></a><!--
+    ---><!--
+    --->, 
+        
       
+        
+          <a class="icon" target="_blank" href="/">
+            <i class="fab fa-linkedin"></i><!--
+      ---></a><!--
+    ---><!--
+    ---> and 
+        
       
-    </footer>
-  </div>
+        
+          <a class="icon" target="_blank" href="mailto:name@email.com">
+            <i class="fas fa-envelope"></i><!--
+      ---></a><!--
+      ---><!--
+    --->.
+        
+      
+    </p>
   
-</article>
-
-
-  
-
-
 </section>
+
+<section id="writing">
+  <span class="h1"><a href="/archives">Writing</a></span>
+  
+  <ul class="post-list">
+    
+    
+      
+    
+    
+      <li class="post-item">
         
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    <div class="meta">
+      
+        
+          <time datetime="2019-07-12T10:37:09.000Z" itemprop="datePublished">2019-07-12</time>
+        
+      
     </div>
-  </div>
 
 
-  
+        <span>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
+        <a class="" href="/2019/07/12/iOS-ImageView-contentMode-图片填充模式/">iOS ImageView contentMode 图片填充模式</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+      
+        
+          <time datetime="2019-07-12T09:30:13.000Z" itemprop="datePublished">2019-07-12</time>
+        
+      
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2019/07/12/iOS八种更新方式/">iOS八种更新方式</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+      
+        
+          <time datetime="2019-07-12T08:30:31.005Z" itemprop="datePublished">2019-07-12</time>
+        
+      
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/2019/07/12/hello-world/">Hello World</a>
+    
+
+
+</span>
+      </li>
+    
+  </ul>
+  
+</section>
+
+
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 叶世昌
+  </div>
+  <div class="footer-right">
+    <nav>
       <ul>
-        
-          <li>
-            <a href="/2019/07/12/iOS-ImageView-contentMode-图片填充模式/">iOS ImageView contentMode 图片填充模式</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/12/iOS八种更新方式/">iOS八种更新方式</a>
-          </li>
-        
-          <li>
-            <a href="/2019/07/12/hello-world/">Hello World</a>
-          </li>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
         
       </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 叶世昌<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
+    </nav>
   </div>
 </footer>
+
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
 </body>
 </html>
