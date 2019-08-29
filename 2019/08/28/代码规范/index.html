@@ -55,28 +55,33 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="这篇规范一共分为三个部分：  核心原则：介绍了这篇代码规范所遵循的核心原则。 通用规范：不局限于iOS的通用性的代码规范（使用C语言和Swift语言）。 iOS规范：仅适用于iOS的代码规范（使用Objective-C语言）。  原则一：代码应该简洁易懂，逻辑清晰因为软件是需要人来维护的。这个人在未来很可能不是你。所以首先是为人编写程序，其次才是计算机：  不要过分追求技巧，降低程序的可读性。 简">
+<meta name="keywords" content="代码规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码规范">
+<meta property="og:url" content="http://yoursite.com/2019/08/28/代码规范/index.html">
 <meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="这篇规范一共分为三个部分：  核心原则：介绍了这篇代码规范所遵循的核心原则。 通用规范：不局限于iOS的通用性的代码规范（使用C语言和Swift语言）。 iOS规范：仅适用于iOS的代码规范（使用Objective-C语言）。  原则一：代码应该简洁易懂，逻辑清晰因为软件是需要人来维护的。这个人在未来很可能不是你。所以首先是为人编写程序，其次才是计算机：  不要过分追求技巧，降低程序的可读性。 简">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-29T05:35:18.811Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人博客">
-  <link rel="canonical" href="http://yoursite.com/">
+<meta name="twitter:title" content="代码规范">
+<meta name="twitter:description" content="这篇规范一共分为三个部分：  核心原则：介绍了这篇代码规范所遵循的核心原则。 通用规范：不局限于iOS的通用性的代码规范（使用C语言和Swift语言）。 iOS规范：仅适用于iOS的代码规范（使用Objective-C语言）。  原则一：代码应该简洁易懂，逻辑清晰因为软件是需要人来维护的。这个人在未来很可能不是你。所以首先是为人编写程序，其次才是计算机：  不要过分追求技巧，降低程序的可读性。 简">
+  <link rel="canonical" href="http://yoursite.com/2019/08/28/代码规范/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>个人博客</title>
+  <title>代码规范 | 个人博客</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -209,12 +214,13 @@
 
           <div id="content" class="content">
             
+
   <div id="posts" class="posts-expand">
-        <article itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block home">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/28/代码规范/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -227,9 +233,8 @@
       <meta itemprop="name" content="个人博客">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/08/28/代码规范/" class="post-title-link" itemprop="url">代码规范</a>
+        <h1 class="post-title" itemprop="name headline">代码规范
+
           
         </h1>
 
@@ -271,7 +276,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>这篇规范一共分为三个部分：</p>
+        <p>这篇规范一共分为三个部分：</p>
 <ol>
 <li>核心原则：介绍了这篇代码规范所遵循的核心原则。</li>
 <li>通用规范：不局限于iOS的通用性的代码规范（使用C语言和Swift语言）。</li>
@@ -900,260 +905,52 @@
 <h3 id="3-手动标明警告和错误"><a href="#3-手动标明警告和错误" class="headerlink" title="3. 手动标明警告和错误"></a>3. 手动标明警告和错误</h3><h4 id="手动明确一个错误："><a href="#手动明确一个错误：" class="headerlink" title="手动明确一个错误："></a>手动明确一个错误：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (NSInteger)divide:(NSInteger)dividend by:(NSInteger)divisor &#123; </span><br><span class="line">  #error Whoa, buddy, you need to check for zero here! </span><br><span class="line">  return (dividend / divisor); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="手动明确一个警告："><a href="#手动明确一个警告：" class="headerlink" title="手动明确一个警告："></a>手动明确一个警告：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (float)divide:(float)dividend by:(float)divisor &#123; </span><br><span class="line">  #warning Dude, don&apos;t compare floating point numbers like this! </span><br><span class="line">   if (divisor != 0.0) &#123; </span><br><span class="line">     return (dividend / divisor); </span><br><span class="line">   &#125; else &#123;</span><br><span class="line">     return NAN; </span><br><span class="line">   &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-      
     </div>
 
     
     
     
+        
+      
+
       <footer class="post-footer">
-          <div class="post-eof"></div>
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/代码规范/" rel="tag"># 代码规范</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/07/12/iOS-ImageView-contentMode-图片填充模式/" rel="next" title="iOS ImageView contentMode 图片填充模式">
+                  <i class="fa fa-chevron-left"></i> iOS ImageView contentMode 图片填充模式
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
         
       </footer>
+    
   </div>
   
   
   
   </article>
 
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="叶世昌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="个人博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/07/12/iOS-ImageView-contentMode-图片填充模式/" class="post-title-link" itemprop="url">iOS ImageView contentMode 图片填充模式</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-07-12 18:37:09" itemprop="dateCreated datePublished" datetime="2019-07-12T18:37:09+08:00">2019-07-12</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-29 15:00:11" itemprop="dateModified" datetime="2019-08-29T15:00:11+08:00">2019-08-29</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong><em>\</em>摘要：**</strong> <code>UIImageView</code>的<code>contentMode</code>这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于<code>imageViewUIViewContentModeScaleToFill</code>,&lt;默认属性,图片根据imageView大小显示,会使图片变形&gt;根据视图的比例去拉伸图片内容<code>UIViewContentModeScaleAspectFit</code>,//contentsscaledtofitwithfixedaspect.remainde</p>
-<p><code>UIImageView</code>的<code>contentMode</code>这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于imageView</p>
-<p><code>UIViewContentModeScaleToFill</code>,&lt;默认属性,图片根据imageView大小显示,会使图片变形&gt;</p>
-<p>根据视图的比例去拉伸图片内容</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1240.png" alt></p>
-<p><code>UIViewContentModeScaleAspectFit</code>,/ /contents scaled to fit with fixed aspect. remainder is transparent (内容符合固定的方面。剩余部分是透明的)</p>
-<p>&lt;图片根据自身比例进行显示,图片小于imageView的部分会透明显示&gt;</p>
-<p>保持图片内容的纵横比例,来适应视图的大小</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1241.png" alt></p>
-<p><code>UIViewContentModeScaleAspectFill</code>,// contents scaled to fill with fixed aspect. some portion of content may be clipped.&lt;内容扩展填充固定方面。部分内容可能剪。&gt;</p>
-<p>&lt;图片按imageView大小比例居中显示,图片可能会失真并且不会显示完整,只显示中间部分&gt;</p>
-<p>用图片内容来填充视图的大小,多余得部分可以被修剪掉来填充整个视图边界</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1242.png" alt></p>
-<p><code>UIViewContentModeRedraw</code>,// redraw on bounds change (calls - setNeedsDisplay) &lt;重划边界变化(重设 - setNeedsDisplay)&gt;</p>
-<p>这个选项是单视图的尺寸位置发生变化的时候通过调用setNeedsDisplay方法来重新显示</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1243.png" alt></p>
-<p><code>UIViewContentModeCenter</code>,// contents remain same size. positioned adjusted.&lt;内容保持相同大小。定位调整&gt;</p>
-<p>保持图片原比例在视图中间显示图片内容,如果视图大小小于图片的尺寸,则图片会超出视图边界,下面类同</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1244.png" alt></p>
-<p><code>UIViewContentModeTop</code>,</p>
-<p>保持图片原比例在视图中间顶部显示图片内容</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1245.png" alt></p>
-<p><code>UIViewContentModeBottom</code>,</p>
-<p>保持图片原比例在视图中间底部显示图片内容</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1246.png" alt></p>
-<p><code>UIViewContentModeLeft</code>,</p>
-<p>保持图片原比例在视图中间左边显示图片内容</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1247.png" alt></p>
-<p><code>UIViewContentModeRight</code>,</p>
-<p>保持图片原比例在视图中间右边显示图片内容</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1248.png" alt></p>
-<p><code>UIViewContentModeTopLeft</code>,</p>
-<p>保持图片原比例在视图左上角显示图片内容</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1249.png" alt></p>
-<p><code>UIViewContentModeTopRight</code>,</p>
-<p>保持图片原比例在视图右上角显示图片内容</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1250.png" alt></p>
-<p><code>UIViewContentModeBottomLeft</code>,</p>
-<p>保持图片原比例在视图左下角显示图片内容</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1251.png" alt></p>
-<p><code>UIViewContentModeBottomRight</code>,</p>
-<p>保持图片原比例在视图右下角显示图片内容</p>
-<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1252.png" alt></p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/iOS八种更新方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="叶世昌">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="个人博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/07/12/iOS八种更新方式/" class="post-title-link" itemprop="url">iOS八种更新方式</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-07-12 17:30:13" itemprop="dateCreated datePublished" datetime="2019-07-12T17:30:13+08:00">2019-07-12</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-29 13:32:11" itemprop="dateModified" datetime="2019-08-29T13:32:11+08:00">2019-08-29</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/常用/" itemprop="url" rel="index"><span itemprop="name">常用</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一、JSPatch"><a href="#一、JSPatch" class="headerlink" title="一、JSPatch"></a>一、JSPatch</h3><p>热更新时，从服务器拉去js脚本。理论上可以修改和新建所有的模块，但是不建议这样做。</p>
-<p>建议 用来做紧急的小需求和 修复严重的线上bug。</p>
-<h3 id="二、lua脚本"><a href="#二、lua脚本" class="headerlink" title="二、lua脚本"></a>二、lua脚本</h3><p>比如： wax。热更新时，从服务器拉去lua脚本。游戏开发经常用到。</p>
-<h3 id="三、Weex"><a href="#三、Weex" class="headerlink" title="三、Weex"></a>三、Weex</h3><p>跨平台，一套代码，iOS、Android都可以运行。用前端语法实现原生效果。比React Native更好用。</p>
-<p>weex基于vue.js，ReactNative使用React。</p>
-<p>ReactNative安装配置麻烦。 weex安装cli之后就可以使用。</p>
-<p>react模板JSX有一定的学习成本，vue和常用的web开发类似，模板是普通的html，数据绑定用mustache风格，样式直接使用css。</p>
-<p>淘宝干的漂亮，中国在编码的实力越来越牛叉了。威武！！！ </p>
-<h3 id="四、React-Native"><a href="#四、React-Native" class="headerlink" title="四、React Native"></a>四、React Native</h3><p>不像Weex能一套代码多端运行，需要自己分别做修改。</p>
-<p>React Native 可以动态添加业务模块，但无法做到修改原生OC代码。</p>
-<p>JSPatch、lua 配合React Native可以让一个原生APP时刻处于可扩展可修改的状态。</p>
-<h3 id="五、Hybrid"><a href="#五、Hybrid" class="headerlink" title="五、Hybrid"></a>五、Hybrid</h3><p>像PhoneGap之类的框架, 基本概念和web差不多, 通过更新js/html来实现动态化，没有原生的效果流畅。</p>
-<h3 id="六、动态库"><a href="#六、动态库" class="headerlink" title="六、动态库"></a>六、动态库</h3><p>可以做demo用，真实使用的时候会被苹果禁止。</p>
-<p>因为 打包发到AppStore的ipa安装包 里的每个动态库 都有唯一的编码，iOS系统会进行验证，所以动态通过网络获取 新的动态库 也用不了。</p>
-<h3 id="七、rollout-io"><a href="#七、rollout-io" class="headerlink" title="七、rollout.io"></a>七、rollout.io</h3><p>Rollout紧急修复线上bug。后端有相关的管理页面。因为是国外的网站，然后呢，要FQ才能使用。</p>
-<h3 id="八、DynamicCocoa"><a href="#八、DynamicCocoa" class="headerlink" title="八、DynamicCocoa"></a>八、DynamicCocoa</h3><p>滴滴iOS的一个框架，准备在2017年初开源，与JSPatch比更加智能化，用OC在XCode中写完代码，用工具可以自动生成可以更新的js文件。</p>
-<p><a href="http://www.cnblogs.com/dahe007/p/6253204.html" target="_blank" rel="noopener">转自 iOS热更新-8种实现方式</a></p>
-
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-  </div>
-
-  
 
 
           </div>
@@ -1172,6 +969,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -1184,6 +986,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原则一：代码应该简洁易懂，逻辑清晰"><span class="nav-number">1.</span> <span class="nav-text">原则一：代码应该简洁易懂，逻辑清晰</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原则二：面向变化编程，而不是面向需求编程。"><span class="nav-number">2.</span> <span class="nav-text">原则二：面向变化编程，而不是面向需求编程。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原则三：先保证程序的正确性，防止过度工程"><span class="nav-number">3.</span> <span class="nav-text">原则三：先保证程序的正确性，防止过度工程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-通用规范"><span class="nav-number"></span> <span class="nav-text">二. 通用规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于大括号"><span class="nav-number">1.</span> <span class="nav-text">关于大括号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">2.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-运算符与变量之间的间隔"><span class="nav-number">2.1.</span> <span class="nav-text">1. 运算符与变量之间的间隔</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-一元运算符与变量之间没有空格："><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 一元运算符与变量之间没有空格：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-二元运算符与变量之间必须有空格"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 二元运算符与变量之间必须有空格</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-多个不同的运算符同时存在时应该使用括号来明确优先级"><span class="nav-number">2.2.</span> <span class="nav-text">2. 多个不同的运算符同时存在时应该使用括号来明确优先级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-一个变量有且只有一个功能，尽量不要把一个变量用作多种用途"><span class="nav-number">3.1.</span> <span class="nav-text">1. 一个变量有且只有一个功能，尽量不要把一个变量用作多种用途</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-变量在使用前应初始化，防止未初始化的变量被引用"><span class="nav-number">3.2.</span> <span class="nav-text">2. 变量在使用前应初始化，防止未初始化的变量被引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-局部变量应该尽量接近使用它的地方"><span class="nav-number">3.3.</span> <span class="nav-text">3. 局部变量应该尽量接近使用它的地方</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if语句"><span class="nav-number">4.</span> <span class="nav-text">if语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-必须列出所有分支（穷举所有的情况），而且每个分支都必须给出明确的结果。"><span class="nav-number">4.1.</span> <span class="nav-text">1. 必须列出所有分支（穷举所有的情况），而且每个分支都必须给出明确的结果。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-不要使用过多的分支，要善于使用return来提前返回错误的情况"><span class="nav-number">4.2.</span> <span class="nav-text">2. 不要使用过多的分支，要善于使用return来提前返回错误的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-条件表达式如果很长，则需要将他们提取出来赋给一个BOOL值"><span class="nav-number">4.3.</span> <span class="nav-text">3. 条件表达式如果很长，则需要将他们提取出来赋给一个BOOL值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-条件语句的判断应该是变量在左，常量在右"><span class="nav-number">4.4.</span> <span class="nav-text">4. 条件语句的判断应该是变量在左，常量在右</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-每个分支的实现代码都必须被大括号包围"><span class="nav-number">4.5.</span> <span class="nav-text">5. 每个分支的实现代码都必须被大括号包围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-条件过多，过长的时候应该换行"><span class="nav-number">4.6.</span> <span class="nav-text">6. 条件过多，过长的时候应该换行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for语句"><span class="nav-number">5.</span> <span class="nav-text">for语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-不可在for循环内修改循环变量，防止for循环失去控制。"><span class="nav-number">5.1.</span> <span class="nav-text">1. 不可在for循环内修改循环变量，防止for循环失去控制。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-避免使用continue和break。"><span class="nav-number">5.2.</span> <span class="nav-text">2. 避免使用continue和break。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-如果出现了continue，只需要把continue的条件取反即可"><span class="nav-number">5.2.1.</span> <span class="nav-text">2.1 如果出现了continue，只需要把continue的条件取反即可</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-消除while里的break：将break的条件取反，并合并到主循环里"><span class="nav-number">5.2.2.</span> <span class="nav-text">2.2 消除while里的break：将break的条件取反，并合并到主循环里</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-在有返回值的方法里消除break：将break转换为return立即返回"><span class="nav-number">5.2.3.</span> <span class="nav-text">2.3 在有返回值的方法里消除break：将break转换为return立即返回</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Switch语句"><span class="nav-number">6.</span> <span class="nav-text">Switch语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-每个分支都必须用大括号括起来"><span class="nav-number">6.1.</span> <span class="nav-text">1. 每个分支都必须用大括号括起来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用枚举类型时，不能有default分支，-除了使用枚举类型以外，都必须有default分支"><span class="nav-number">6.2.</span> <span class="nav-text">2. 使用枚举类型时，不能有default分支， 除了使用枚举类型以外，都必须有default分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">7.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-一个函数的长度必须限制在50行以内"><span class="nav-number">7.1.</span> <span class="nav-text">1. 一个函数的长度必须限制在50行以内</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-一个函数只做一件事（单一原则）"><span class="nav-number">7.2.</span> <span class="nav-text">2. 一个函数只做一件事（单一原则）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-对于有返回值的函数（方法），每一个分支都必须有返回值"><span class="nav-number">7.3.</span> <span class="nav-text">3. 对于有返回值的函数（方法），每一个分支都必须有返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-对输入参数的正确性和有效性进行检查，参数错误立即返回"><span class="nav-number">7.4.</span> <span class="nav-text">4. 对输入参数的正确性和有效性进行检查，参数错误立即返回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-如果在不同的函数内部有相同的功能，应该把相同的功能抽取出来单独作为另一个函数"><span class="nav-number">7.5.</span> <span class="nav-text">5. 如果在不同的函数内部有相同的功能，应该把相同的功能抽取出来单独作为另一个函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-将函数内部比较复杂的逻辑提取出来作为单独的函数"><span class="nav-number">7.6.</span> <span class="nav-text">6. 将函数内部比较复杂的逻辑提取出来作为单独的函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-避免使用全局变量，类成员（class-member）来传递信息，尽量使用局部变量和参数。"><span class="nav-number">7.7.</span> <span class="nav-text">8. 避免使用全局变量，类成员（class member）来传递信息，尽量使用局部变量和参数。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">8.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-Review"><span class="nav-number">9.</span> <span class="nav-text">Code Review</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-iOS规范"><span class="nav-number"></span> <span class="nav-text">三. iOS规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量-1"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-变量名必须使用驼峰格式"><span class="nav-number">1.1.</span> <span class="nav-text">1. 变量名必须使用驼峰格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-变量的名称必须同时包含功能与类型"><span class="nav-number">1.2.</span> <span class="nav-text">2. 变量的名称必须同时包含功能与类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-系统常用类作实例变量声明时加入后缀"><span class="nav-number">1.3.</span> <span class="nav-text">3. 系统常用类作实例变量声明时加入后缀</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量"><span class="nav-number">2.</span> <span class="nav-text">常量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-常量以相关类名作为前缀"><span class="nav-number">2.1.</span> <span class="nav-text">1. 常量以相关类名作为前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-建议使用类型常量，不建议使用-define预处理命令"><span class="nav-number">2.2.</span> <span class="nav-text">2. 建议使用类型常量，不建议使用#define预处理命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-对外公开某个常量："><span class="nav-number">2.3.</span> <span class="nav-text">3. 对外公开某个常量：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#宏"><span class="nav-number">3.</span> <span class="nav-text">宏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-宏、常量名都要使用大写字母，用下划线‘-’分割单词。"><span class="nav-number">3.1.</span> <span class="nav-text">1. 宏、常量名都要使用大写字母，用下划线‘_’分割单词。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-宏定义中如果包含表达式或变量，表达式和变量必须用小括号括起来。"><span class="nav-number">3.2.</span> <span class="nav-text">2. 宏定义中如果包含表达式或变量，表达式和变量必须用小括号括起来。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CGRect函数"><span class="nav-number">4.</span> <span class="nav-text">CGRect函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#范型"><span class="nav-number">5.</span> <span class="nav-text">范型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Block"><span class="nav-number">6.</span> <span class="nav-text">Block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字面量语法"><span class="nav-number">7.</span> <span class="nav-text">字面量语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性"><span class="nav-number">8.</span> <span class="nav-text">属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-属性的命名使用小驼峰"><span class="nav-number">8.1.</span> <span class="nav-text">1. 属性的命名使用小驼峰</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-属性的关键字推荐按照-原子性，读写，内存管理的顺序排列"><span class="nav-number">8.2.</span> <span class="nav-text">2. 属性的关键字推荐按照 原子性，读写，内存管理的顺序排列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Block属性应该使用copy关键字"><span class="nav-number">8.3.</span> <span class="nav-text">3. Block属性应该使用copy关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-形容词性的BOOL属性的getter应该加上is前缀"><span class="nav-number">8.4.</span> <span class="nav-text">4. 形容词性的BOOL属性的getter应该加上is前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-使用getter方法做懒加载"><span class="nav-number">8.5.</span> <span class="nav-text">5. 使用getter方法做懒加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-除了init和dealloc方法，建议都使用点语法访问属性"><span class="nav-number">8.6.</span> <span class="nav-text">6. 除了init和dealloc方法，建议都使用点语法访问属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#setter："><span class="nav-number">8.6.1.</span> <span class="nav-text">setter：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getter："><span class="nav-number">8.6.2.</span> <span class="nav-text">getter：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-不要滥用点语法，要区分好方法调用和属性访问"><span class="nav-number">8.7.</span> <span class="nav-text">7. 不要滥用点语法，要区分好方法调用和属性访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-尽量使用不可变对象"><span class="nav-number">8.8.</span> <span class="nav-text">8. 尽量使用不可变对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">9.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-方法名中不应使用and，而且签名要与对应的参数名保持高度一致"><span class="nav-number">9.1.</span> <span class="nav-text">1. 方法名中不应使用and，而且签名要与对应的参数名保持高度一致</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-方法实现时，如果参数过长，则令每个参数占用一行，以冒号对齐。"><span class="nav-number">9.2.</span> <span class="nav-text">2. 方法实现时，如果参数过长，则令每个参数占用一行，以冒号对齐。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-私有方法应该在实现文件中申明。"><span class="nav-number">9.3.</span> <span class="nav-text">3. 私有方法应该在实现文件中申明。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-方法名用小写字母开头的单词组合而成"><span class="nav-number">9.4.</span> <span class="nav-text">4. 方法名用小写字母开头的单词组合而成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-方法名前缀"><span class="nav-number">9.5.</span> <span class="nav-text">5. 方法名前缀</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向协议编程"><span class="nav-number">10.</span> <span class="nav-text">面向协议编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案一："><span class="nav-number">10.1.</span> <span class="nav-text">方案一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方案二："><span class="nav-number">10.2.</span> <span class="nav-text">方案二：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS-中委托的设计"><span class="nav-number">11.</span> <span class="nav-text">iOS 中委托的设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-要区分好代理和数据源的区别"><span class="nav-number">11.1.</span> <span class="nav-text">1. 要区分好代理和数据源的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-代理方法的第一个参数必须为委托者"><span class="nav-number">11.2.</span> <span class="nav-text">2. 代理方法的第一个参数必须为委托者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向代理发送消息时需要判断其是否实现该方法"><span class="nav-number">11.3.</span> <span class="nav-text">向代理发送消息时需要判断其是否实现该方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-遵循代理过多的时候，换行对齐显示"><span class="nav-number">11.4.</span> <span class="nav-text">3. 遵循代理过多的时候，换行对齐显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-代理的方法需要明确必须执行和可不执行"><span class="nav-number">11.5.</span> <span class="nav-text">4. 代理的方法需要明确必须执行和可不执行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类"><span class="nav-number">12.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-类的名称应该以三个大写字母为前缀；创建子类的时候，应该把代表子类特点的部分放在前缀和父类名的中间"><span class="nav-number">12.1.</span> <span class="nav-text">1. 类的名称应该以三个大写字母为前缀；创建子类的时候，应该把代表子类特点的部分放在前缀和父类名的中间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-initializer-amp-amp-dealloc"><span class="nav-number">12.2.</span> <span class="nav-text">2. initializer &amp;&amp; dealloc</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-dealloc方法里面应该直接访问实例变量，不应该用点语法访问"><span class="nav-number">12.2.1.</span> <span class="nav-text">2.1 dealloc方法里面应该直接访问实例变量，不应该用点语法访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-init方法的写法："><span class="nav-number">12.2.2.</span> <span class="nav-text">2.2 init方法的写法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-指定初始化方法"><span class="nav-number">12.2.3.</span> <span class="nav-text">2.3 指定初始化方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-所有返回类对象和实例对象的方法都应该使用instancetype"><span class="nav-number">12.3.</span> <span class="nav-text">3. 所有返回类对象和实例对象的方法都应该使用instancetype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-在类的头文件中尽量少引用其他头文件"><span class="nav-number">12.4.</span> <span class="nav-text">4. 在类的头文件中尽量少引用其他头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-类的布局"><span class="nav-number">12.5.</span> <span class="nav-text">5. 类的布局</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">13.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-分类添加的方法需要添加前缀和下划线"><span class="nav-number">13.1.</span> <span class="nav-text">1. 分类添加的方法需要添加前缀和下划线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-把类的实现代码分散到便于管理的多个分类中"><span class="nav-number">13.2.</span> <span class="nav-text">2. 把类的实现代码分散到便于管理的多个分类中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单例"><span class="nav-number">14.</span> <span class="nav-text">单例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-单例不能作为容器对象来使用"><span class="nav-number">14.1.</span> <span class="nav-text">1. 单例不能作为容器对象来使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-使用dispatch-once来生成单例"><span class="nav-number">14.2.</span> <span class="nav-text">2. 使用dispatch_once来生成单例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相等性的判断"><span class="nav-number">15.</span> <span class="nav-text">相等性的判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法文档"><span class="nav-number">16.</span> <span class="nav-text">方法文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多用队列，少用同步锁来避免资源抢夺"><span class="nav-number">16.1.</span> <span class="nav-text">多用队列，少用同步锁来避免资源抢夺</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方案一：使用串行同步队列来将读写操作都安排到同一个队列里："><span class="nav-number">16.1.1.</span> <span class="nav-text">方案一：使用串行同步队列来将读写操作都安排到同一个队列里：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案二：将写操作放入栅栏快中，让他们单独执行；将读取操作并发执行。"><span class="nav-number">16.1.2.</span> <span class="nav-text">方案二：将写操作放入栅栏快中，让他们单独执行；将读取操作并发执行。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现description方法打印自定义对象信息"><span class="nav-number">17.</span> <span class="nav-text">实现description方法打印自定义对象信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSArray-amp-NSMutableArray"><span class="nav-number">18.</span> <span class="nav-text">NSArray&amp; NSMutableArray</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-addObject之前要非空判断。"><span class="nav-number">18.1.</span> <span class="nav-text">1. addObject之前要非空判断。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-取下标的时候要判断是否越界。"><span class="nav-number">18.2.</span> <span class="nav-text">2. 取下标的时候要判断是否越界。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-取第一个元素或最后一个元素的时候使用firtstObject和lastObject"><span class="nav-number">18.3.</span> <span class="nav-text">3. 取第一个元素或最后一个元素的时候使用firtstObject和lastObject</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSCache"><span class="nav-number">19.</span> <span class="nav-text">NSCache</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-构建缓存时选用NSCache-而非NSDictionary"><span class="nav-number">19.1.</span> <span class="nav-text">1. 构建缓存时选用NSCache 而非NSDictionary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-NSCache优于NSDictionary的几点："><span class="nav-number">19.2.</span> <span class="nav-text">2. NSCache优于NSDictionary的几点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSNotification"><span class="nav-number">20.</span> <span class="nav-text">NSNotification</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-通知的名称"><span class="nav-number">20.1.</span> <span class="nav-text">1. 通知的名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-通知的移除"><span class="nav-number">20.2.</span> <span class="nav-text">2. 通知的移除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">21.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Xcode工程文件的物理路径要和逻辑路径保持一致。"><span class="nav-number">21.1.</span> <span class="nav-text">1. Xcode工程文件的物理路径要和逻辑路径保持一致。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-忽略没有使用变量的编译警告"><span class="nav-number">21.2.</span> <span class="nav-text">2. 忽略没有使用变量的编译警告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-手动标明警告和错误"><span class="nav-number">21.3.</span> <span class="nav-text">3. 手动标明警告和错误</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#手动明确一个错误："><span class="nav-number">21.3.1.</span> <span class="nav-text">手动明确一个错误：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手动明确一个警告："><span class="nav-number">21.3.2.</span> <span class="nav-text">手动明确一个警告：</span></a></li></ol></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 

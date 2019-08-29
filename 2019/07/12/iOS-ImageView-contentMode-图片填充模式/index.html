@@ -1,292 +1,586 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.9.0">
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="摘要： UIImageView的contentMode这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于imageViewUIViewContentModeScaleToFill,&amp;lt;默认属性,图片根据imageView大小显示,会使图片变形&amp;gt;根据视图的比例去拉伸图片内容UIViewContentModeScaleAspectFit,/">
+
+
+
+
+
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+<link rel="stylesheet" href="fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="\摘要：** UIImageView的contentMode这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于imageViewUIViewContentModeScaleToFill,&amp;lt;默认属性,图片根据imageView大小显示,会使图片变形&amp;gt;根据视图的比例去拉伸图片内容UIViewContentModeScaleAspectFi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS ImageView contentMode 图片填充模式">
 <meta property="og:url" content="http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="摘要： UIImageView的contentMode这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于imageViewUIViewContentModeScaleToFill,&amp;lt;默认属性,图片根据imageView大小显示,会使图片变形&amp;gt;根据视图的比例去拉伸图片内容UIViewContentModeScaleAspectFit,/">
+<meta property="og:description" content="\摘要：** UIImageView的contentMode这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于imageViewUIViewContentModeScaleToFill,&amp;lt;默认属性,图片根据imageView大小显示,会使图片变形&amp;gt;根据视图的比例去拉伸图片内容UIViewContentModeScaleAspectFi">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-b5ee394ed2760978.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-70b4db65bce15fd5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-3d8ba8c9575f8530.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-e184a3eeb3aae30e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-cc66f48aa59d4236.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-aef63a33d5451399.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-8615e13261bfe920.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-02343d8c318dc810.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-fd0b48cae665f029.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-07a77b7e25154f5a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-6e92311595abffe0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-cad04eacfbf601e8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2917199-0a5292acbde4ab00.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-15T05:46:36.637Z">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1240.png">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1241.png">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1242.png">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1243.png">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1244.png">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1245.png">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1246.png">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1247.png">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1248.png">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1249.png">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1250.png">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1251.png">
+<meta property="og:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1252.png">
+<meta property="og:updated_time" content="2019-08-29T07:00:11.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS ImageView contentMode 图片填充模式">
-<meta name="twitter:description" content="摘要： UIImageView的contentMode这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于imageViewUIViewContentModeScaleToFill,&amp;lt;默认属性,图片根据imageView大小显示,会使图片变形&amp;gt;根据视图的比例去拉伸图片内容UIViewContentModeScaleAspectFit,/">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2917199-b5ee394ed2760978.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-    
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
-        
-    
-    <!-- title -->
-    <title>iOS ImageView contentMode 图片填充模式</title>
-    <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
-    <!-- persian styles -->
-    
-      <link rel="stylesheet" href="/css/rtl.css">
-    
-    <!-- rss -->
-    
-    
-</head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a href="/projects_url">Projects</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        
-        <li><a class="icon" href="/2019/07/12/iOS八种更新方式/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&text=iOS ImageView contentMode 图片填充模式"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&title=iOS ImageView contentMode 图片填充模式"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&is_video=false&description=iOS ImageView contentMode 图片填充模式"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=iOS ImageView contentMode 图片填充模式&body=Check out this article: http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&title=iOS ImageView contentMode 图片填充模式"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&title=iOS ImageView contentMode 图片填充模式"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&title=iOS ImageView contentMode 图片填充模式"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&title=iOS ImageView contentMode 图片填充模式"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&name=iOS ImageView contentMode 图片填充模式&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    <div id="toc">
-      
-    </div>
-  </span>
-</div>
-
-    
-    <div class="content index py4">
-        
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        iOS ImageView contentMode 图片填充模式
-    </h1>
+<meta name="twitter:description" content="\摘要：** UIImageView的contentMode这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于imageViewUIViewContentModeScaleToFill,&amp;lt;默认属性,图片根据imageView大小显示,会使图片变形&amp;gt;根据视图的比例去拉伸图片内容UIViewContentModeScaleAspectFi">
+<meta name="twitter:image" content="http://yoursite.com/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1240.png">
+  <link rel="canonical" href="http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/">
 
 
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
 
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">个人博客</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2019-07-12T10:37:09.000Z" itemprop="datePublished">2019-07-12</time>
-        
-      
-    </div>
-
-
-      
-
-      
-
-    </div>
-  </header>
+  <title>iOS ImageView contentMode 图片填充模式 | 个人博客</title>
+  <meta name="generator" content="Hexo 3.9.0">
   
 
-  <div class="content" itemprop="articleBody">
-    <p><strong>摘要：</strong> <code>UIImageView</code>的<code>contentMode</code>这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于<code>imageViewUIViewContentModeScaleToFill</code>,&lt;默认属性,图片根据imageView大小显示,会使图片变形&gt;根据视图的比例去拉伸图片内容<code>UIViewContentModeScaleAspectFit</code>,//contentsscaledtofitwithfixedaspect.remainde<br><code>UIImageView</code>的<code>contentMode</code>这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于imageView</p>
-<p><code>UIViewContentModeScaleToFill</code>,&lt;默认属性,图片根据imageView大小显示,会使图片变形&gt;</p>
-<p>根据视图的比例去拉伸图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-b5ee394ed2760978.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeScaleAspectFit</code>,/ /contents scaled to fit with fixed aspect. remainder is transparent (内容符合固定的方面。剩余部分是透明的)</p>
-<p>&lt;图片根据自身比例进行显示,图片小于imageView的部分会透明显示&gt;<br>保持图片内容的纵横比例,来适应视图的大小<br><img src="https://upload-images.jianshu.io/upload_images/2917199-70b4db65bce15fd5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeScaleAspectFill</code>,// contents scaled to fill with fixed aspect. some portion of content may be clipped.&lt;内容扩展填充固定方面。部分内容可能剪。&gt;</p>
-<p>&lt;图片按imageView大小比例居中显示,图片可能会失真并且不会显示完整,只显示中间部分&gt;</p>
-<p>用图片内容来填充视图的大小,多余得部分可以被修剪掉来填充整个视图边界<br><img src="https://upload-images.jianshu.io/upload_images/2917199-3d8ba8c9575f8530.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeRedraw</code>,// redraw on bounds change (calls - setNeedsDisplay) &lt;重划边界变化(重设 - setNeedsDisplay)&gt;</p>
-<p>这个选项是单视图的尺寸位置发生变化的时候通过调用setNeedsDisplay方法来重新显示<br><img src="https://upload-images.jianshu.io/upload_images/2917199-e184a3eeb3aae30e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p><code>UIViewContentModeCenter</code>,// contents remain same size. positioned adjusted.&lt;内容保持相同大小。定位调整&gt;</p>
-<p>保持图片原比例在视图中间显示图片内容,如果视图大小小于图片的尺寸,则图片会超出视图边界,下面类同<br><img src="https://upload-images.jianshu.io/upload_images/2917199-cc66f48aa59d4236.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeTop</code>,</p>
-<p>保持图片原比例在视图中间顶部显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-aef63a33d5451399.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeBottom</code>,</p>
-<p>保持图片原比例在视图中间底部显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-8615e13261bfe920.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeLeft</code>,</p>
-<p>保持图片原比例在视图中间左边显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-02343d8c318dc810.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeRight</code>,</p>
-<p>保持图片原比例在视图中间右边显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-fd0b48cae665f029.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeTopLeft</code>,</p>
-<p>保持图片原比例在视图左上角显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-07a77b7e25154f5a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeTopRight</code>,</p>
-<p>保持图片原比例在视图右上角显示图片内容</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2917199-6e92311595abffe0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeBottomLeft</code>,</p>
-<p>保持图片原比例在视图左下角显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-cad04eacfbf601e8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><code>UIViewContentModeBottomRight</code>,</p>
-<p>保持图片原比例在视图右下角显示图片内容<br><img src="https://upload-images.jianshu.io/upload_images/2917199-0a5292acbde4ab00.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-
-  </div>
-</article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
 
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a href="/projects_url">Projects</a></li>
-        
-      </ul>
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-
-    <div id="toc-footer" style="display: none">
+        <p class="site-subtitle">欢迎来到我的博客</p>
       
-    </div>
+  </div>
 
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&text=iOS ImageView contentMode 图片填充模式"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&title=iOS ImageView contentMode 图片填充模式"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&is_video=false&description=iOS ImageView contentMode 图片填充模式"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=iOS ImageView contentMode 图片填充模式&body=Check out this article: http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&title=iOS ImageView contentMode 图片填充模式"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&title=iOS ImageView contentMode 图片填充模式"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&title=iOS ImageView contentMode 图片填充模式"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&title=iOS ImageView contentMode 图片填充模式"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/&name=iOS ImageView contentMode 图片填充模式&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
-    </div>
-
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
   </div>
 </div>
 
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
         
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2019 叶世昌
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Writing</a></li>
-         
-          <li><a href="/projects_url">Projects</a></li>
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
         
-      </ul>
-    </nav>
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
   </div>
-</footer>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/iOS-ImageView-contentMode-图片填充模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶世昌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">iOS ImageView contentMode 图片填充模式
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-07-12 18:37:09" itemprop="dateCreated datePublished" datetime="2019-07-12T18:37:09+08:00">2019-07-12</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-29 15:00:11" itemprop="dateModified" datetime="2019-08-29T15:00:11+08:00">2019-08-29</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong><em>\</em>摘要：**</strong> <code>UIImageView</code>的<code>contentMode</code>这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于<code>imageViewUIViewContentModeScaleToFill</code>,&lt;默认属性,图片根据imageView大小显示,会使图片变形&gt;根据视图的比例去拉伸图片内容<code>UIViewContentModeScaleAspectFit</code>,//contentsscaledtofitwithfixedaspect.remainde</p>
+<p><code>UIImageView</code>的<code>contentMode</code>这个属性是用来设置图片的显示方式,如居中、居右,是否缩放等,系统给出的有枚举类型,以下示例图片比例大于imageView</p>
+<p><code>UIViewContentModeScaleToFill</code>,&lt;默认属性,图片根据imageView大小显示,会使图片变形&gt;</p>
+<p>根据视图的比例去拉伸图片内容</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1240.png" alt></p>
+<p><code>UIViewContentModeScaleAspectFit</code>,/ /contents scaled to fit with fixed aspect. remainder is transparent (内容符合固定的方面。剩余部分是透明的)</p>
+<p>&lt;图片根据自身比例进行显示,图片小于imageView的部分会透明显示&gt;</p>
+<p>保持图片内容的纵横比例,来适应视图的大小</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1241.png" alt></p>
+<p><code>UIViewContentModeScaleAspectFill</code>,// contents scaled to fill with fixed aspect. some portion of content may be clipped.&lt;内容扩展填充固定方面。部分内容可能剪。&gt;</p>
+<p>&lt;图片按imageView大小比例居中显示,图片可能会失真并且不会显示完整,只显示中间部分&gt;</p>
+<p>用图片内容来填充视图的大小,多余得部分可以被修剪掉来填充整个视图边界</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1242.png" alt></p>
+<p><code>UIViewContentModeRedraw</code>,// redraw on bounds change (calls - setNeedsDisplay) &lt;重划边界变化(重设 - setNeedsDisplay)&gt;</p>
+<p>这个选项是单视图的尺寸位置发生变化的时候通过调用setNeedsDisplay方法来重新显示</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1243.png" alt></p>
+<p><code>UIViewContentModeCenter</code>,// contents remain same size. positioned adjusted.&lt;内容保持相同大小。定位调整&gt;</p>
+<p>保持图片原比例在视图中间显示图片内容,如果视图大小小于图片的尺寸,则图片会超出视图边界,下面类同</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1244.png" alt></p>
+<p><code>UIViewContentModeTop</code>,</p>
+<p>保持图片原比例在视图中间顶部显示图片内容</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1245.png" alt></p>
+<p><code>UIViewContentModeBottom</code>,</p>
+<p>保持图片原比例在视图中间底部显示图片内容</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1246.png" alt></p>
+<p><code>UIViewContentModeLeft</code>,</p>
+<p>保持图片原比例在视图中间左边显示图片内容</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1247.png" alt></p>
+<p><code>UIViewContentModeRight</code>,</p>
+<p>保持图片原比例在视图中间右边显示图片内容</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1248.png" alt></p>
+<p><code>UIViewContentModeTopLeft</code>,</p>
+<p>保持图片原比例在视图左上角显示图片内容</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1249.png" alt></p>
+<p><code>UIViewContentModeTopRight</code>,</p>
+<p>保持图片原比例在视图右上角显示图片内容</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1250.png" alt></p>
+<p><code>UIViewContentModeBottomLeft</code>,</p>
+<p>保持图片原比例在视图左下角显示图片内容</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1251.png" alt></p>
+<p><code>UIViewContentModeBottomRight</code>,</p>
+<p>保持图片原比例在视图右下角显示图片内容</p>
+<p><img src="/Users/ysc/Desktop/Github/yeshichang.github.io/source/_posts/iOS-ImageView-contentMode-%E5%9B%BE%E7%89%87%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/1252.png" alt></p>
 
     </div>
-    <!-- styles -->
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
-    <!-- jquery -->
-<script src="/lib/jquery/jquery.min.js"></script>
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-<!-- clipboard -->
+    
+    
+    
+        
+      
 
-  <script src="/lib/clipboard/clipboard.min.js"></script>
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
-    btn += '<i class="far fa-clone"></i>';
-    btn += '</span>'; 
-    // mount it!
-    $(".highlight .code pre").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      target: function(trigger) {
-        return trigger.nextElementSibling;
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "Copied!");
-      e.clearSelection();
-    })
-  })
-  </script>
+      <footer class="post-footer">
 
-<script src="/js/main.js"></script>
-<!-- search -->
+        
 
-<!-- Google Analytics -->
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/07/12/iOS八种更新方式/" rel="next" title="iOS八种更新方式">
+                  <i class="fa fa-chevron-left"></i> iOS八种更新方式
+                </a>
+              
+            </div>
 
-<!-- Baidu Analytics -->
+            <span class="post-nav-divider"></span>
 
-<!-- Disqus Comments -->
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/08/28/代码规范/" rel="prev" title="代码规范">
+                  代码规范 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
 
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">叶世昌</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/yeshichang" title="GitHub &rarr; https://github.com/yeshichang" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:yeshichang1991@gmail.com" title="E-Mail &rarr; mailto:yeshichang1991@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/叶葉叶葉" title="Weibo &rarr; https://weibo.com/叶葉叶葉" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶世昌</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
 
 </body>
 </html>
