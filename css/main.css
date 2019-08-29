@@ -153,8 +153,8 @@ template {
 body {
   background: #f5f7f9;
   color: #555;
-  font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 1em;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 0.9em;
   line-height: 2;
 }
 @media (max-width: 991px) {
@@ -168,7 +168,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Roboto Slab', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Roboto Slab', 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -1042,7 +1042,7 @@ pre .javascript .function {
 }
 .site-title {
   display: inline-block;
-  font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   line-height: 1.5;
@@ -1134,7 +1134,7 @@ pre .javascript .function {
 .post-body {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 @media (min-width: 1200px) {
   .post-body {
@@ -1420,7 +1420,7 @@ article:last-child .post-eof {
 }
 .posts-expand .post-meta {
   color: #999;
-  font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   margin: 3px 0 60px 0;
   text-align: center;
 }
@@ -1593,6 +1593,47 @@ article:last-child .post-eof {
   align-self: center;
   height: 30px;
 }
+#reward-container {
+  margin: 20px auto;
+  padding: 10px 0;
+  text-align: center;
+  width: 90%;
+}
+#reward-button {
+  background: #f44336;
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  letter-spacing: normal;
+  line-height: 2;
+  margin: 0;
+  outline: 0;
+  padding: 0 15px;
+  text-indent: 0;
+  text-shadow: none;
+  text-transform: none;
+  vertical-align: text-top;
+}
+#reward-button span:hover {
+  background: #f7877f;
+}
+#qr {
+  padding-top: 20px;
+}
+#qr a {
+  border: 0;
+}
+#qr img {
+  display: inline-block;
+  margin: 0.8em 2em 0 2em;
+  max-width: 100%;
+  width: 180px;
+}
+#qr p {
+  text-align: center;
+}
 .sidebar {
   background: #222;
   bottom: 0;
@@ -1673,7 +1714,7 @@ article:last-child .post-eof {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #dfd498;
+  background: #3eeb9f;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
