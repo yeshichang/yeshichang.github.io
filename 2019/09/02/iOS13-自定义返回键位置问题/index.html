@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+<link rel="stylesheet" href="fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="iOS13 beta7已经出来了，为了提前适配应用，测试机升级看看应用是否有问题，幸好坑不算多，主要问题就是用系统导航栏的位置返回按钮向右偏移过多。主要与原有项目中的一些自定义导航返回键不统一。之前项目已经对iOS11后导航栏的变化做过处理 iOS11以下通过UIBarButtonSystemItemFixedSpace进行处理，可以参考论坛的一篇文章，但是iOS13系统处理不了。 所以寻找新方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS13 自定义返回键位置问题">
+<meta property="og:url" content="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/index.html">
+<meta property="og:site_name" content="小星语">
+<meta property="og:description" content="iOS13 beta7已经出来了，为了提前适配应用，测试机升级看看应用是否有问题，幸好坑不算多，主要问题就是用系统导航栏的位置返回按钮向右偏移过多。主要与原有项目中的一些自定义导航返回键不统一。之前项目已经对iOS11后导航栏的变化做过处理 iOS11以下通过UIBarButtonSystemItemFixedSpace进行处理，可以参考论坛的一篇文章，但是iOS13系统处理不了。 所以寻找新方法">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/10000.jpeg">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/10001.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/10002.png">
+<meta property="og:updated_time" content="2019-09-02T10:58:46.380Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS13 自定义返回键位置问题">
+<meta name="twitter:description" content="iOS13 beta7已经出来了，为了提前适配应用，测试机升级看看应用是否有问题，幸好坑不算多，主要问题就是用系统导航栏的位置返回按钮向右偏移过多。主要与原有项目中的一些自定义导航返回键不统一。之前项目已经对iOS11后导航栏的变化做过处理 iOS11以下通过UIBarButtonSystemItemFixedSpace进行处理，可以参考论坛的一篇文章，但是iOS13系统处理不了。 所以寻找新方法">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/10000.jpeg">
+  <link rel="canonical" href="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>iOS13 自定义返回键位置问题 | 小星语</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7d968c8927331f3ac7600bc9dc901735";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小星语</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">工作求结果，生活求过程</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-commonweal">
+      
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶世昌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://github.com/yeshichang/Times_Test/blob/master/Source/10000.jpeg?raw=true">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小星语">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">iOS13 自定义返回键位置问题
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-02 17:53:05 / 修改时间：18:58:46" itemprop="dateCreated datePublished" datetime="2019-09-02T17:53:05+08:00">2019-09-02</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Coding日常problem/" itemprop="url" rel="index"><span itemprop="name">Coding日常problem</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>iOS13 beta7已经出来了，为了提前适配应用，测试机升级看看应用是否有问题，幸好坑不算多，主要问题就是用系统导航栏的位置返回按钮向右偏移过多。主要与原有项目中的一些自定义导航返回键不统一。<br><img src="/2019/09/02/iOS13-自定义返回键位置问题/10000.jpeg" alt><br><img src="/2019/09/02/iOS13-自定义返回键位置问题/10001.png" alt></p><hr><h6 id="之前项目已经对iOS11后导航栏的变化做过处理"><a href="#之前项目已经对iOS11后导航栏的变化做过处理" class="headerlink" title="之前项目已经对iOS11后导航栏的变化做过处理"></a>之前项目已经对iOS11后导航栏的变化做过处理</h6><ol>
+<li>iOS11以下通过<code>UIBarButtonSystemItemFixedSpace</code>进行处理，可以参考<a href="https://forums.developer.apple.com/thread/80075" target="_blank" rel="noopener">论坛的一篇文章</a>，但是iOS13系统处理不了。</li>
+<li>所以寻找新方法解决这个问题，让我们先删除原来项目代码，大刀阔斧的干，要有豁出去的精神。</li>
+</ol><a id="more"></a>
+
+
+<h6 id="因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改"><a href="#因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改" class="headerlink" title="因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改"></a>因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改</h6><p>网上参考，在寻找一些解决方案。觉得这篇最合适 <a href="https://blog.csdn.net/spicyShrimp/article/details/78201042" target="_blank" rel="noopener">iOS11 导航栏按钮位置问题的解决——新</a>，简洁流畅无冗余，结合自己项目做一些修改。最主要同时解决iOS13导航栏返回键偏移的问题。<br>使用layoutMargins这个属性<br><img src="/2019/09/02/iOS13-自定义返回键位置问题/10002.png" alt><br>遍历图层大致可以看到时这样的结构</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;_UINavigationBarContentView: <span class="number">0x7fc141607250</span>; frame = (<span class="number">0</span> <span class="number">0</span>; <span class="number">414</span> <span class="number">44</span>); layer = &lt;<span class="built_in">CALayer</span>: <span class="number">0x608000038cc0</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这个UINavigationBarContentView平铺在导航栏中作为iOS11的各个按钮的父视图,该视图的所有的子视图都会有一个layoutMargins被占用,也就是系统调整的占位,我们只要把这个置空就行了.那样的话该视图下的所有的子视图的空间就会变成我们想要的那样,当然为了保险起见,该视图的父视图也就是bar的layoutMargins也置空,这样 整个bar就会跟一个普通视图一样了 左右的占位约束就不存在了</p>
+<p>可以过代码处理</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">UINavigationBar</span> (<span class="title">FixSpace</span>)</span></span><br><span class="line">+(<span class="keyword">void</span>)load &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</span><br><span class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</span><br><span class="line">        [<span class="keyword">self</span> swizzleInstanceMethodWithOriginSel:<span class="keyword">@selector</span>(layoutSubviews)</span><br><span class="line">                                     swizzledSel:<span class="keyword">@selector</span>(vst_layoutSubviews)];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)vst_layoutSubviews&#123;</span><br><span class="line">    [<span class="keyword">self</span> vst_layoutSubviews];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (deviceVersion &gt;= <span class="number">11</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.layoutMargins = <span class="built_in">UIEdgeInsetsZero</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">UIView</span> *subview <span class="keyword">in</span> <span class="keyword">self</span>.subviews) &#123;</span><br><span class="line">            <span class="keyword">if</span> ([<span class="built_in">NSStringFromClass</span>(subview.class) containsString:<span class="string">@"ContentView"</span>]) &#123;</span><br><span class="line">                subview.layoutMargins = <span class="built_in">UIEdgeInsetsZero</span>;<span class="comment">//可修正iOS11之后的偏移</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="最终代码"><a href="#最终代码" class="headerlink" title="最终代码"></a>最终代码</h6><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">UINavigationConfig</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">CGFloat</span> vst_defaultFixSpace; <span class="comment">// item距离两端的间距,默认为0</span></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">BOOL</span> vst_disableFixSpace;    <span class="comment">// 是否禁止使用修正,默认为NO</span></span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">instancetype</span>)shared;</span><br><span class="line">- (<span class="keyword">instancetype</span>)init <span class="built_in">NS_UNAVAILABLE</span>;</span><br><span class="line">+ (<span class="keyword">instancetype</span>)new <span class="built_in">NS_UNAVAILABLE</span>;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)vst_systemSpace;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">UINavigationItem</span> (<span class="title">VSTFixSpace</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">NSObject</span> (<span class="title">VSTFixSpace</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"UINavigationVSTFixSpace.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;objc/runtime.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> vst_swizzle(Class oldClass, <span class="built_in">NSString</span> *oldSelector, Class newClass) &#123;</span><br><span class="line">    <span class="built_in">NSString</span> *newSelector = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"vst_%@"</span>, oldSelector];</span><br><span class="line">    Method old = class_getInstanceMethod(oldClass, <span class="built_in">NSSelectorFromString</span>(oldSelector));</span><br><span class="line">    Method new = class_getInstanceMethod(newClass, <span class="built_in">NSSelectorFromString</span>(newSelector));</span><br><span class="line">    method_exchangeImplementations(old, new);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">UINavigationConfig</span></span></span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">instancetype</span>)shared &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">UINavigationConfig</span> *config;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</span><br><span class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</span><br><span class="line">        config = [[<span class="keyword">self</span> alloc] init];</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">instancetype</span>)init &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> = [<span class="keyword">super</span> init]) &#123;</span><br><span class="line">        <span class="keyword">self</span>.vst_defaultFixSpace = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">self</span>.vst_disableFixSpace = <span class="literal">NO</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)vst_systemSpace &#123;</span><br><span class="line">    <span class="keyword">return</span> MIN([<span class="built_in">UIScreen</span> mainScreen].bounds.size.width, [<span class="built_in">UIScreen</span> mainScreen].bounds.size.height) &gt; <span class="number">375</span> ? <span class="number">20</span> : <span class="number">16</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">UINavigationItem</span> (<span class="title">VSTFixSpace</span>)</span></span><br><span class="line"></span><br><span class="line">+(<span class="keyword">void</span>)load &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</span><br><span class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</span><br><span class="line">        <span class="keyword">if</span> (@available(iOS <span class="number">11.0</span>, *)) &#123;&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">NSArray</span> &lt;<span class="built_in">NSString</span> *&gt;*oriSels = @[<span class="string">@"setLeftBarButtonItem:"</span>,</span><br><span class="line">                                             <span class="string">@"setLeftBarButtonItem:animated:"</span>,</span><br><span class="line">                                             <span class="string">@"setLeftBarButtonItems:"</span>,</span><br><span class="line">                                             <span class="string">@"setLeftBarButtonItems:animated:"</span>,</span><br><span class="line">                                             <span class="string">@"setRightBarButtonItem:"</span>,</span><br><span class="line">                                             <span class="string">@"setRightBarButtonItem:animated:"</span>,</span><br><span class="line">                                             <span class="string">@"setRightBarButtonItems:"</span>,</span><br><span class="line">                                             <span class="string">@"setRightBarButtonItems:animated:"</span>];</span><br><span class="line">            </span><br><span class="line">            [oriSels enumerateObjectsUsingBlock:^(<span class="built_in">NSString</span> * _Nonnull oriSel, <span class="built_in">NSUInteger</span> idx, <span class="built_in">BOOL</span> * _Nonnull stop) &#123;</span><br><span class="line">                vst_swizzle(<span class="keyword">self</span>, oriSel, <span class="keyword">self</span>);</span><br><span class="line">            &#125;];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)vst_setLeftBarButtonItem:(<span class="built_in">UIBarButtonItem</span> *)leftBarButtonItem &#123;</span><br><span class="line">    [<span class="keyword">self</span> setLeftBarButtonItem:leftBarButtonItem animated:<span class="literal">NO</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)vst_setLeftBarButtonItem:(<span class="built_in">UIBarButtonItem</span> *)leftBarButtonItem animated:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">UINavigationConfig</span>.shared.vst_disableFixSpace &amp;&amp; leftBarButtonItem) &#123;<span class="comment">// 存在按钮且需要调节</span></span><br><span class="line">        [<span class="keyword">self</span> setLeftBarButtonItems:@[leftBarButtonItem] animated:animated];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;<span class="comment">// 不存在按钮,或者不需要调节</span></span><br><span class="line">        [<span class="keyword">self</span> vst_setLeftBarButtonItem:leftBarButtonItem animated:animated];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)vst_setLeftBarButtonItems:(<span class="built_in">NSArray</span>&lt;<span class="built_in">UIBarButtonItem</span> *&gt; *)leftBarButtonItems &#123;</span><br><span class="line">    [<span class="keyword">self</span> setLeftBarButtonItems:leftBarButtonItems animated:<span class="literal">NO</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)vst_setLeftBarButtonItems:(<span class="built_in">NSArray</span>&lt;<span class="built_in">UIBarButtonItem</span> *&gt; *)leftBarButtonItems animated:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">UINavigationConfig</span>.shared.vst_disableFixSpace &amp;&amp; leftBarButtonItems.count) &#123;<span class="comment">// 存在按钮且需要调节</span></span><br><span class="line">        <span class="built_in">UIBarButtonItem</span> *firstItem = leftBarButtonItems.firstObject;</span><br><span class="line">        <span class="built_in">CGFloat</span> width = <span class="built_in">UINavigationConfig</span>.shared.vst_defaultFixSpace - <span class="built_in">UINavigationConfig</span>.shared.vst_systemSpace;</span><br><span class="line">        <span class="keyword">if</span> (firstItem.width == width) &#123;<span class="comment">// 已经存在space</span></span><br><span class="line">            [<span class="keyword">self</span> vst_setLeftBarButtonItems:leftBarButtonItems animated:animated];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">NSMutableArray</span> *items = [<span class="built_in">NSMutableArray</span> arrayWithArray:leftBarButtonItems];</span><br><span class="line">            [items insertObject:[<span class="keyword">self</span> fixedSpaceWithWidth:width] atIndex:<span class="number">0</span>];</span><br><span class="line">            [<span class="keyword">self</span> vst_setLeftBarButtonItems:items animated:animated];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;<span class="comment">// 不存在按钮,或者不需要调节</span></span><br><span class="line">        [<span class="keyword">self</span> vst_setLeftBarButtonItems:leftBarButtonItems animated:animated];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)vst_setRightBarButtonItem:(<span class="built_in">UIBarButtonItem</span> *)rightBarButtonItem&#123;</span><br><span class="line">    [<span class="keyword">self</span> setRightBarButtonItem:rightBarButtonItem animated:<span class="literal">NO</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)vst_setRightBarButtonItem:(<span class="built_in">UIBarButtonItem</span> *)rightBarButtonItem animated:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    <span class="keyword">if</span> (![<span class="built_in">UINavigationConfig</span> shared].vst_disableFixSpace &amp;&amp; rightBarButtonItem) &#123;<span class="comment">// 存在按钮且需要调节</span></span><br><span class="line">        [<span class="keyword">self</span> setRightBarButtonItems:@[rightBarButtonItem] animated:animated];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;<span class="comment">// 不存在按钮,或者不需要调节</span></span><br><span class="line">        [<span class="keyword">self</span> vst_setRightBarButtonItem:rightBarButtonItem animated:animated];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)vst_setRightBarButtonItems:(<span class="built_in">NSArray</span>&lt;<span class="built_in">UIBarButtonItem</span> *&gt; *)rightBarButtonItems&#123;</span><br><span class="line">    [<span class="keyword">self</span> setRightBarButtonItems:rightBarButtonItems animated:<span class="literal">NO</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)vst_setRightBarButtonItems:(<span class="built_in">NSArray</span>&lt;<span class="built_in">UIBarButtonItem</span> *&gt; *)rightBarButtonItems animated:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">UINavigationConfig</span>.shared.vst_disableFixSpace &amp;&amp; rightBarButtonItems.count) &#123;<span class="comment">// 存在按钮且需要调节</span></span><br><span class="line">        <span class="built_in">UIBarButtonItem</span> *firstItem = rightBarButtonItems.firstObject;</span><br><span class="line">        <span class="built_in">CGFloat</span> width = <span class="built_in">UINavigationConfig</span>.shared.vst_defaultFixSpace - <span class="built_in">UINavigationConfig</span>.shared.vst_systemSpace;</span><br><span class="line">        <span class="keyword">if</span> (firstItem.width == width) &#123;<span class="comment">// 已经存在space</span></span><br><span class="line">            [<span class="keyword">self</span> vst_setRightBarButtonItems:rightBarButtonItems animated:animated];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">NSMutableArray</span> *items = [<span class="built_in">NSMutableArray</span> arrayWithArray:rightBarButtonItems];</span><br><span class="line">            [items insertObject:[<span class="keyword">self</span> fixedSpaceWithWidth:width] atIndex:<span class="number">0</span>];</span><br><span class="line">            [<span class="keyword">self</span> vst_setRightBarButtonItems:items animated:animated];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;<span class="comment">// 不存在按钮,或者不需要调节</span></span><br><span class="line">        [<span class="keyword">self</span> vst_setRightBarButtonItems:rightBarButtonItems animated:animated];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">UIBarButtonItem</span> *)fixedSpaceWithWidth:(<span class="built_in">CGFloat</span>)width &#123;</span><br><span class="line">    <span class="built_in">UIBarButtonItem</span> *fixedSpace = [[<span class="built_in">UIBarButtonItem</span> alloc]initWithBarButtonSystemItem:<span class="built_in">UIBarButtonSystemItemFixedSpace</span> target:<span class="literal">nil</span> action:<span class="literal">nil</span>];</span><br><span class="line">    fixedSpace.width = width;</span><br><span class="line">    <span class="keyword">return</span> fixedSpace;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">NSObject</span> (<span class="title">VSTFixSpace</span>)</span></span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">void</span>)load &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</span><br><span class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</span><br><span class="line">        <span class="keyword">if</span> (@available(iOS <span class="number">13.0</span>, *)) &#123;</span><br><span class="line">            <span class="built_in">NSDictionary</span> &lt;<span class="built_in">NSString</span> *, <span class="built_in">NSString</span> *&gt;*oriSels = @&#123;<span class="string">@"_UINavigationBarContentView"</span>: <span class="string">@"layoutSubviews"</span>,</span><br><span class="line">                                                              <span class="string">@"_UINavigationBarContentViewLayout"</span>: <span class="string">@"_updateMarginConstraints"</span>&#125;;</span><br><span class="line">            [oriSels enumerateKeysAndObjectsUsingBlock:^(<span class="built_in">NSString</span> * _Nonnull cls, <span class="built_in">NSString</span> * _Nonnull oriSel, <span class="built_in">BOOL</span> * _Nonnull stop) &#123;</span><br><span class="line">                vst_swizzle(<span class="built_in">NSClassFromString</span>(cls), oriSel, <span class="built_in">NSObject</span>.class);</span><br><span class="line">            &#125;];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)vst_layoutSubviews &#123;</span><br><span class="line">    [<span class="keyword">self</span> vst_layoutSubviews];</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">UINavigationConfig</span>.shared.vst_disableFixSpace) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (![<span class="keyword">self</span> isMemberOfClass:<span class="built_in">NSClassFromString</span>(<span class="string">@"_UINavigationBarContentView"</span>)]) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">id</span> layout = [<span class="keyword">self</span> valueForKey:<span class="string">@"_layout"</span>];</span><br><span class="line">    <span class="keyword">if</span> (!layout) <span class="keyword">return</span>;</span><br><span class="line">    SEL selector = <span class="built_in">NSSelectorFromString</span>(<span class="string">@"_updateMarginConstraints"</span>);</span><br><span class="line">    IMP imp = [layout methodForSelector:selector];</span><br><span class="line">    <span class="keyword">void</span> (*func)(<span class="keyword">id</span>, SEL) = (<span class="keyword">void</span> *)imp;</span><br><span class="line">    func(layout, selector);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)vst__updateMarginConstraints &#123;</span><br><span class="line">    [<span class="keyword">self</span> vst__updateMarginConstraints];</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">UINavigationConfig</span>.shared.vst_disableFixSpace) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (![<span class="keyword">self</span> isMemberOfClass:<span class="built_in">NSClassFromString</span>(<span class="string">@"_UINavigationBarContentViewLayout"</span>)]) <span class="keyword">return</span>;</span><br><span class="line">    [<span class="keyword">self</span> vst_adjustLeadingBarConstraints];</span><br><span class="line">    [<span class="keyword">self</span> vst_adjustTrailingBarConstraints];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)vst_adjustLeadingBarConstraints &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">UINavigationConfig</span>.shared.vst_disableFixSpace) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">NSArray</span>&lt;<span class="built_in">NSLayoutConstraint</span> *&gt; *leadingBarConstraints = [<span class="keyword">self</span> valueForKey:<span class="string">@"_leadingBarConstraints"</span>];</span><br><span class="line">    <span class="keyword">if</span> (!leadingBarConstraints) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">CGFloat</span> constant = <span class="built_in">UINavigationConfig</span>.shared.vst_defaultFixSpace - <span class="built_in">UINavigationConfig</span>.shared.vst_systemSpace;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">NSLayoutConstraint</span> *constraint <span class="keyword">in</span> leadingBarConstraints) &#123;</span><br><span class="line">        <span class="keyword">if</span> (constraint.firstAttribute == <span class="built_in">NSLayoutAttributeLeading</span> &amp;&amp;</span><br><span class="line">            constraint.secondAttribute == <span class="built_in">NSLayoutAttributeLeading</span>) &#123;</span><br><span class="line">            constraint.constant = constant;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)vst_adjustTrailingBarConstraints &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">UINavigationConfig</span>.shared.vst_disableFixSpace) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">NSArray</span>&lt;<span class="built_in">NSLayoutConstraint</span> *&gt; *trailingBarConstraints = [<span class="keyword">self</span> valueForKey:<span class="string">@"_trailingBarConstraints"</span>];</span><br><span class="line">    <span class="keyword">if</span> (!trailingBarConstraints) <span class="keyword">return</span>;</span><br><span class="line">    <span class="built_in">CGFloat</span> constant = <span class="built_in">UINavigationConfig</span>.shared.vst_systemSpace - <span class="built_in">UINavigationConfig</span>.shared.vst_defaultFixSpace;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">NSLayoutConstraint</span> *constraint <span class="keyword">in</span> trailingBarConstraints) &#123;</span><br><span class="line">        <span class="keyword">if</span> (constraint.firstAttribute == <span class="built_in">NSLayoutAttributeTrailing</span> &amp;&amp;</span><br><span class="line">            constraint.secondAttribute == <span class="built_in">NSLayoutAttributeTrailing</span>) &#123;</span><br><span class="line">            constraint.constant = constant;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/spicyShrimp/UINavigation-SXFixSpace" target="_blank" rel="noopener">原文demo地址</a></p>
+
+    </div>
+
+    
+    
+    
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="https://github.com/yeshichang/Times_Test/blob/master/Source/wechat_public_number.jpg?raw=true" alt="叶世昌 wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      
+        
+      
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="https://github.com/yeshichang/Times_Test/blob/master/Source/wechat.jpg?raw=true" alt="叶世昌 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="https://github.com/yeshichang/Times_Test/blob/master/Source/alipay.jpg?raw=true" alt="叶世昌 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/08/31/My-life/" rel="next" title="My life">
+                  <i class="fa fa-chevron-left"></i> My life
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#之前项目已经对iOS11后导航栏的变化做过处理"><span class="nav-number">1.</span> <span class="nav-text">之前项目已经对iOS11后导航栏的变化做过处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改"><span class="nav-number">2.</span> <span class="nav-text">因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#最终代码"><span class="nav-number">3.</span> <span class="nav-text">最终代码</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="https://github.com/yeshichang/Times_Test/blob/master/Source/10000.jpeg?raw=true"
+      alt="叶世昌">
+  <p class="site-author-name" itemprop="name">叶世昌</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/yeshichang" title="GitHub &rarr; https://github.com/yeshichang" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:yeshichang1991@gmail.com" title="E-Mail &rarr; mailto:yeshichang1991@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/u/5796497329" title="Weibo &rarr; https://weibo.com/u/5796497329" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://twitter.com/" title="Twitter &rarr; https://twitter.com/" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶世昌</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
