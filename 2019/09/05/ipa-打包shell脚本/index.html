@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+<link rel="stylesheet" href="fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="问题描述当我们想打包一个IPA，为自己内部测试使用，或者IPA部署自己服务器，这时候我们使用shell脚本就方便点了。 Xcode scheme run set release，  device set generic iOS device，  run done product 文件夹下就有我们想要的东西了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ipa 打包shell脚本">
+<meta property="og:url" content="http://yoursite.com/2019/09/05/ipa-打包shell脚本/index.html">
+<meta property="og:site_name" content="小星语">
+<meta property="og:description" content="问题描述当我们想打包一个IPA，为自己内部测试使用，或者IPA部署自己服务器，这时候我们使用shell脚本就方便点了。 Xcode scheme run set release，  device set generic iOS device，  run done product 文件夹下就有我们想要的东西了">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/09/05/ipa-打包shell脚本/10000.jpg">
+<meta property="og:updated_time" content="2019-09-05T08:48:35.929Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ipa 打包shell脚本">
+<meta name="twitter:description" content="问题描述当我们想打包一个IPA，为自己内部测试使用，或者IPA部署自己服务器，这时候我们使用shell脚本就方便点了。 Xcode scheme run set release，  device set generic iOS device，  run done product 文件夹下就有我们想要的东西了">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/05/ipa-打包shell脚本/10000.jpg">
+  <link rel="canonical" href="http://yoursite.com/2019/09/05/ipa-打包shell脚本/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>ipa 打包shell脚本 | 小星语</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7d968c8927331f3ac7600bc9dc901735";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小星语</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">工作求结果，生活求过程</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-commonweal">
+      
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/05/ipa-打包shell脚本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶世昌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://github.com/yeshichang/Times_Test/blob/master/Source/10000.jpeg?raw=true">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小星语">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">ipa 打包shell脚本
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-05 15:39:55 / 修改时间：16:48:35" itemprop="dateCreated datePublished" datetime="2019-09-05T15:39:55+08:00">2019-09-05</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img src="/2019/09/05/ipa-打包shell脚本/10000.jpg" alt></p><h6 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h6><p>当我们想打包一个<code>IPA</code>，为自己内部测试使用，或者<code>IPA</code>部署自己服务器，这时候我们使用shell脚本就方便点了。</p><ol>
+<li>Xcode scheme run set release， </li>
+<li>device set generic iOS device， </li>
+<li>run done</li>
+</ol><p>product 文件夹下就有我们想要的东西了</p><a id="more"></a>
+
+
+
+<h6 id="编写好shell脚本，自动化快速为我们打包"><a href="#编写好shell脚本，自动化快速为我们打包" class="headerlink" title="编写好shell脚本，自动化快速为我们打包"></a>编写好<code>shell</code>脚本，自动化快速为我们打包</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\033[32m xcodebuild----------------------------start-------------------------- \033[0m'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#打包基础配置</span></span><br><span class="line">userName=<span class="string">'ysc'</span></span><br><span class="line">appName=<span class="string">'Vostic'</span></span><br><span class="line">svnVersion=<span class="string">'1.1.1'</span></span><br><span class="line">serverConfig=<span class="string">'BeiJing'</span></span><br><span class="line"><span class="comment">#serverConfig='ShuBei'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#debugMode='Debug'</span></span><br><span class="line">debugMode=<span class="string">'Release'</span></span><br><span class="line">sandbox=<span class="string">'eynjaojbmfxqukcbinxdlfasvkpi'</span></span><br><span class="line"></span><br><span class="line">savePath=/Users/<span class="variable">$&#123;userName&#125;</span>/Desktop/xcodebuild</span><br><span class="line"></span><br><span class="line">svnCheckPath=/Users/<span class="variable">$&#123;userName&#125;</span>/Desktop/iOS/Vostic</span><br><span class="line">svnLocalPath=<span class="variable">$&#123;svnCheckPath&#125;</span>/<span class="variable">$&#123;svnVersion&#125;</span></span><br><span class="line">svnRemotePath=svn://yeshichang@10.1.6.1/dev/issue/iOS/Vostic/2019/<span class="variable">$&#123;svnVersion&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#检出svn</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"checkout svn <span class="variable">$svnVersion</span>"</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$svnLocalPath</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$&#123;svnCheckPath&#125;</span></span><br><span class="line">svn checkout <span class="variable">$&#123;svnRemotePath&#125;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\033[32m xcodebuild---------------------------build--------------------------- \033[0m'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输入版本号</span></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"Build version:"</span> buildVersion</span><br><span class="line"></span><br><span class="line"><span class="comment">#检查测试包是否已存在</span></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">"<span class="variable">$svnLocalPath</span>/<span class="variable">$buildVersion</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"check <span class="variable">$buildVersion</span> is exists!"</span></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输入Git版本号</span></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"Git version:"</span> gitVersion</span><br><span class="line"></span><br><span class="line"><span class="comment">#开始时间戳</span></span><br><span class="line">startTime=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建存放目录</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$savePath</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">mkdir <span class="string">"<span class="variable">$savePath</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#判断目录存在</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$savePath</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"check <span class="variable">$savePath</span> is no exists!"</span></span><br><span class="line"><span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#打开存放目录</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$&#123;savePath&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#移除目录文件</span></span><br><span class="line">rm -rf *</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建版本目录</span></span><br><span class="line">mkdir <span class="string">"<span class="variable">$savePath</span>/<span class="variable">$buildVersion</span>"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#拷贝xxx.app到存放目录</span></span><br><span class="line">cp -rf /Users/<span class="variable">$&#123;userName&#125;</span>/Library/Developer/Xcode/DerivedData/<span class="variable">$&#123;appName&#125;</span>-<span class="variable">$&#123;sandbox&#125;</span>/Build/Products/<span class="variable">$&#123;debugMode&#125;</span>-iphoneos/<span class="variable">$&#123;appName&#125;</span>.app <span class="variable">$&#123;savePath&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#拷贝xxx.app到存放目录</span></span><br><span class="line">cp -rf /Users/<span class="variable">$&#123;userName&#125;</span>/Library/Developer/Xcode/DerivedData/<span class="variable">$&#123;appName&#125;</span>-<span class="variable">$&#123;sandbox&#125;</span>/Build/Products/<span class="variable">$&#123;debugMode&#125;</span>-iphoneos/<span class="variable">$&#123;appName&#125;</span>.app.dSYM <span class="variable">$&#123;savePath&#125;</span>/<span class="variable">$&#123;buildVersion&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\033[32m xcodebuild----------------------------ipa-------------------------- \033[0m'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#利用itues将xxx.app生成ipa</span></span><br><span class="line">mkdir Payload</span><br><span class="line">cp -rf <span class="variable">$&#123;appName&#125;</span>.app Payload/<span class="variable">$&#123;appName&#125;</span>.app</span><br><span class="line">cp Icon.png <span class="variable">$&#123;appName&#125;</span>/iTunesArtwork</span><br><span class="line">zip -r <span class="variable">$&#123;appName&#125;</span>.ipa Payload iTunesArtwork</span><br><span class="line"></span><br><span class="line"><span class="comment">#移除临时文件</span></span><br><span class="line">rm -rf Payload</span><br><span class="line">rm -rf <span class="variable">$&#123;appName&#125;</span>.app</span><br><span class="line"></span><br><span class="line"><span class="comment">#移动xxx.ipa到版本目录</span></span><br><span class="line">packageName=iOS_<span class="variable">$&#123;buildVersion&#125;</span>_$(date <span class="string">"+%Y%m%d"</span>)_<span class="variable">$&#123;serverConfig&#125;</span>_<span class="variable">$&#123;gitVersion:0:10&#125;</span></span><br><span class="line">mv <span class="variable">$&#123;appName&#125;</span>.ipa <span class="variable">$&#123;packageName&#125;</span>.ipa</span><br><span class="line">mv <span class="variable">$&#123;packageName&#125;</span>.ipa ./<span class="variable">$&#123;buildVersion&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\033[32m xcodebuild----------------------------zip-------------------------- \033[0m'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#打开版本目录</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$&#123;savePath&#125;</span>/<span class="variable">$&#123;buildVersion&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#压缩xxx.ipa、xxx.app.dSYM</span></span><br><span class="line">zip -r -m <span class="variable">$&#123;buildVersion&#125;</span>.zip ./</span><br><span class="line"></span><br><span class="line"><span class="comment">#回到存放目录</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"></span><br><span class="line"><span class="comment">#拷贝测试包到svn目录</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="string">"<span class="variable">$svnLocalPath</span>/<span class="variable">$buildVersion</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">mv <span class="variable">$&#123;buildVersion&#125;</span> <span class="variable">$&#123;svnLocalPath&#125;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\033[32m xcodebuild----------------------------svn-------------------------- \033[0m'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#打开svn目录</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$&#123;svnLocalPath&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#提交测试包</span></span><br><span class="line">svn cleanup</span><br><span class="line">svn add <span class="variable">$&#123;buildVersion&#125;</span></span><br><span class="line">svn commit -m <span class="string">"提交iOS测试包<span class="variable">$buildVersion</span>"</span> <span class="variable">$&#123;buildVersion&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#结束时间戳</span></span><br><span class="line">endTime=$(date +%s)</span><br><span class="line">time=$((<span class="variable">$endTime</span> - <span class="variable">$startTime</span>))</span><br><span class="line"></span><br><span class="line">minute=$((<span class="variable">$time</span>/60))</span><br><span class="line">second=$((<span class="variable">$time</span>%60))</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"\033[44;37m 总用时：<span class="variable">$&#123;minute&#125;</span>分<span class="variable">$&#123;second&#125;</span>秒 \033[0m"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'\033[32m xcodebuild----------------------------end-------------------------- \033[0m'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="https://github.com/yeshichang/Times_Test/blob/master/Source/wechat_public_number.jpg?raw=true" alt="叶世昌 wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      
+        
+      
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="https://github.com/yeshichang/Times_Test/blob/master/Source/wechat.jpg?raw=true" alt="叶世昌 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="https://github.com/yeshichang/Times_Test/blob/master/Source/alipay.jpg?raw=true" alt="叶世昌 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/09/02/iOS13-自定义返回键位置问题/" rel="next" title="iOS13 自定义返回键位置问题">
+                  <i class="fa fa-chevron-left"></i> iOS13 自定义返回键位置问题
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#编写好shell脚本，自动化快速为我们打包"><span class="nav-number">2.</span> <span class="nav-text">编写好shell脚本，自动化快速为我们打包</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="https://github.com/yeshichang/Times_Test/blob/master/Source/10000.jpeg?raw=true"
+      alt="叶世昌">
+  <p class="site-author-name" itemprop="name">叶世昌</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/yeshichang" title="GitHub &rarr; https://github.com/yeshichang" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:yeshichang1991@gmail.com" title="E-Mail &rarr; mailto:yeshichang1991@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/u/5796497329" title="Weibo &rarr; https://weibo.com/u/5796497329" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://twitter.com/ydbs2_xw5" title="Twitter &rarr; https://twitter.com/ydbs2_xw5" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶世昌</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
