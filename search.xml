@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Study English]]></title>
+    <url>%2F2019%2F09%2F07%2F%E5%AD%A6%E4%B9%A0%E8%8B%B1%E6%96%87%2F</url>
+    <content type="text"><![CDATA[编程和英文息息相关，不会英文对开发过程中造成的影响还是不小的。尤其在读一些文档方面，熟悉每个单词的中文意思对读懂整个文档帮助很大。我的英文水平在高中后退化就很大了，大学英语基本上也没学过，词汇量不大，对我的工作生活影响也很大，虽然听力不行，但是增大词汇量对读一些国外文章就不成问题。平时的开发经常查一些单词，捡起来一些东西了，以后还是把自己所查的东西给记录下来吧。便于自己以后看看。 每天记录一些自己不认识或者不熟悉的单词 单词 释意 读音 Diamond 金刚石;钻石;菱形;(纸牌的)方块 美 [ˈdaɪəmənd] Permission 准许;许可;批准;许可证;书面许可 美 [pərˈmɪʃn] External 外部的;外面的;外界的;外来的;在外的;来自(学校或机构)以外的 美 [ɪkˈstɜːrnl] 记录一些自己喜欢的英文语句]]></content>
+      <categories>
+        <category>Life</category>
+      </categories>
+      <tags>
+        <tag>English</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ipa 打包shell脚本]]></title>
     <url>%2F2019%2F09%2F05%2Fipa-%E6%89%93%E5%8C%85shell%E8%84%9A%E6%9C%AC%2F</url>
     <content type="text"><![CDATA[问题描述当我们想打包一个IPA，为自己内部测试使用，或者IPA部署自己服务器，这时候我们使用shell脚本就方便点了。 Xcode scheme run set release， device set generic iOS device，  run done product 文件夹下就有我们想要的东西了 编写好shell脚本，自动化快速为我们打包123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125#!/bin/shecho '\033[32m xcodebuild----------------------------start-------------------------- \033[0m'#打包基础配置userName='ysc'appName='Vostic'svnVersion='1.1.1'serverConfig='BeiJing'#serverConfig='ShuBei'#debugMode='Debug'debugMode='Release'sandbox='eynjaojbmfxqukcbinxdlfasvkpi'savePath=/Users/$&#123;userName&#125;/Desktop/xcodebuildsvnCheckPath=/Users/$&#123;userName&#125;/Desktop/iOS/VosticsvnLocalPath=$&#123;svnCheckPath&#125;/$&#123;svnVersion&#125;svnRemotePath=svn://yeshichang@10.1.6.1/dev/issue/iOS/Vostic/2019/$&#123;svnVersion&#125;#检出svnecho "checkout svn $svnVersion"if [ ! -d "$svnLocalPath" ]; thencd $&#123;svnCheckPath&#125;svn checkout $&#123;svnRemotePath&#125;fiecho '\033[32m xcodebuild---------------------------build--------------------------- \033[0m'#输入版本号read -p "Build version:" buildVersion#检查测试包是否已存在if [ -d "$svnLocalPath/$buildVersion" ]; thenecho "check $buildVersion is exists!"exit 0fi#输入Git版本号read -p "Git version:" gitVersion#开始时间戳startTime=$(date +%s)#创建存放目录if [ ! -d "$savePath" ]; thenmkdir "$savePath"fi#判断目录存在if [ ! -d "$savePath" ]; thenecho "check $savePath is no exists!"exit 0fi#打开存放目录cd $&#123;savePath&#125;#移除目录文件rm -rf *#创建版本目录mkdir "$savePath/$buildVersion"#拷贝xxx.app到存放目录cp -rf /Users/$&#123;userName&#125;/Library/Developer/Xcode/DerivedData/$&#123;appName&#125;-$&#123;sandbox&#125;/Build/Products/$&#123;debugMode&#125;-iphoneos/$&#123;appName&#125;.app $&#123;savePath&#125;#拷贝xxx.app到存放目录cp -rf /Users/$&#123;userName&#125;/Library/Developer/Xcode/DerivedData/$&#123;appName&#125;-$&#123;sandbox&#125;/Build/Products/$&#123;debugMode&#125;-iphoneos/$&#123;appName&#125;.app.dSYM $&#123;savePath&#125;/$&#123;buildVersion&#125;echo '\033[32m xcodebuild----------------------------ipa-------------------------- \033[0m'#利用itues将xxx.app生成ipamkdir Payloadcp -rf $&#123;appName&#125;.app Payload/$&#123;appName&#125;.appcp Icon.png $&#123;appName&#125;/iTunesArtworkzip -r $&#123;appName&#125;.ipa Payload iTunesArtwork#移除临时文件rm -rf Payloadrm -rf $&#123;appName&#125;.app#移动xxx.ipa到版本目录packageName=iOS_$&#123;buildVersion&#125;_$(date "+%Y%m%d")_$&#123;serverConfig&#125;_$&#123;gitVersion:0:10&#125;mv $&#123;appName&#125;.ipa $&#123;packageName&#125;.ipamv $&#123;packageName&#125;.ipa ./$&#123;buildVersion&#125;echo '\033[32m xcodebuild----------------------------zip-------------------------- \033[0m'#打开版本目录cd $&#123;savePath&#125;/$&#123;buildVersion&#125;#压缩xxx.ipa、xxx.app.dSYMzip -r -m $&#123;buildVersion&#125;.zip ./#回到存放目录cd ..#拷贝测试包到svn目录if [ ! -d "$svnLocalPath/$buildVersion" ]; thenmv $&#123;buildVersion&#125; $&#123;svnLocalPath&#125;fiecho '\033[32m xcodebuild----------------------------svn-------------------------- \033[0m'#打开svn目录cd $&#123;svnLocalPath&#125;#提交测试包svn cleanupsvn add $&#123;buildVersion&#125;svn commit -m "提交iOS测试包$buildVersion" $&#123;buildVersion&#125;#结束时间戳endTime=$(date +%s)time=$(($endTime - $startTime))minute=$(($time/60))second=$(($time%60))echo "\033[44;37m 总用时：$&#123;minute&#125;分$&#123;second&#125;秒 \033[0m"echo '\033[32m xcodebuild----------------------------end-------------------------- \033[0m'exit 0]]></content>
@@ -19,7 +30,7 @@
   <entry>
     <title><![CDATA[My life]]></title>
     <url>%2F2019%2F08%2F31%2FMy-life%2F</url>
-    <content type="text"><![CDATA[Please enter password to read. Incorrect Password! No content to display! U2FsdGVkX1/HLiUhtc8XvyTEp1vggRkv8NjiTP4ru77I3+9eZGtLykzZDQXryUL0g63wy8Ig2SjcwnkG5IW0xqkAcDEZns5N4CHkRZwDOnZCiaMmtSYidq7IyaBnwoty]]></content>
+    <content type="text"><![CDATA[Please enter password to read. Incorrect Password! No content to display! U2FsdGVkX1+7M2LfsXWydId23BaqVlOZpzMXNo9F5aELJHN4BmBmtknmC/QpjD8YymBam8ppEsbuI4l1jFqHq7B0E78inE3LTUZmowS3+ArlMUvTnuCg1i/Yu/K/cbid]]></content>
       <categories>
         <category>Life</category>
       </categories>
