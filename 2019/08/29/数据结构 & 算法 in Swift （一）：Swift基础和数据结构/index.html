@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-<script src="/blog/js/src/photoswipe.min.js?v="></script>
-<script src="/blog/js/src/photoswipe-ui-default.min.js?v="></script>
+<script src="/js/src/photoswipe.min.js?v="></script>
+<script src="/js/src/photoswipe-ui-default.min.js?v="></script>
 
 
 
@@ -13,22 +13,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 3.9.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.4.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.4.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/blog/',
+    root: '/',
     scheme: 'Gemini',
     version: '7.4.0',
     exturl: false,
@@ -62,19 +62,19 @@
   <meta name="description" content="写在前面从本文标题中的序号可以看出，本文是一个连载的开篇。而且这个连载的标题是：数据结构 &amp;amp; 算法 in Swift。从这个连载的标题中可以看出，笔者分享的是使用Swift语言来实现所学的的数据结构和算法的知识。这里面需要解释两点：第一：为什么学习数据结构和算法？学习通用性知识，突破技能瓶颈：笔者做iOS开发也有两年了，这期间通过从项目，第三方源码，相关应用类的编程书籍提高了些技术水平。而">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构 &amp; 算法 in Swift （一）：Swift基础和数据结构">
-<meta property="og:url" content="https://paoche.gitee.io/blog/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/index.html">
 <meta property="og:site_name" content="小星语">
 <meta property="og:description" content="写在前面从本文标题中的序号可以看出，本文是一个连载的开篇。而且这个连载的标题是：数据结构 &amp;amp; 算法 in Swift。从这个连载的标题中可以看出，笔者分享的是使用Swift语言来实现所学的的数据结构和算法的知识。这里面需要解释两点：第一：为什么学习数据结构和算法？学习通用性知识，突破技能瓶颈：笔者做iOS开发也有两年了，这期间通过从项目，第三方源码，相关应用类的编程书籍提高了些技术水平。而">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://paoche.gitee.io/blog/blog/2019/08/29/数据结构%20&%20算法%20in%20Swift%20（一）：Swift基础和数据结构/10002.png">
-<meta property="og:image" content="https://paoche.gitee.io/blog/blog/2019/08/29/数据结构%20&%20算法%20in%20Swift%20（一）：Swift基础和数据结构/10000.png">
-<meta property="og:image" content="https://paoche.gitee.io/blog/blog/2019/08/29/数据结构%20&%20算法%20in%20Swift%20（一）：Swift基础和数据结构/10001.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/29/数据结构%20&%20算法%20in%20Swift%20（一）：Swift基础和数据结构/10002.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/29/数据结构%20&%20算法%20in%20Swift%20（一）：Swift基础和数据结构/10000.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/29/数据结构%20&%20算法%20in%20Swift%20（一）：Swift基础和数据结构/10001.png">
 <meta property="og:updated_time" content="2019-08-30T02:26:40.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构 &amp; 算法 in Swift （一）：Swift基础和数据结构">
 <meta name="twitter:description" content="写在前面从本文标题中的序号可以看出，本文是一个连载的开篇。而且这个连载的标题是：数据结构 &amp;amp; 算法 in Swift。从这个连载的标题中可以看出，笔者分享的是使用Swift语言来实现所学的的数据结构和算法的知识。这里面需要解释两点：第一：为什么学习数据结构和算法？学习通用性知识，突破技能瓶颈：笔者做iOS开发也有两年了，这期间通过从项目，第三方源码，相关应用类的编程书籍提高了些技术水平。而">
-<meta name="twitter:image" content="https://paoche.gitee.io/blog/blog/2019/08/29/数据结构%20&%20算法%20in%20Swift%20（一）：Swift基础和数据结构/10002.png">
-  <link rel="canonical" href="https://paoche.gitee.io/blog/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/29/数据结构%20&%20算法%20in%20Swift%20（一）：Swift基础和数据结构/10002.png">
+  <link rel="canonical" href="http://yoursite.com/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/">
 
 
 <script id="page-configurations">
@@ -142,7 +142,7 @@
   <div class="site-meta">
 
     <div>
-      <a href="/blog/" class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">小星语</span>
         <span class="logo-line-after"><i></i></span>
@@ -173,7 +173,7 @@
       
     
 
-    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
       
@@ -184,7 +184,7 @@
       
     
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
       
@@ -195,7 +195,7 @@
       
     
 
-    <a href="/blog/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
       
@@ -206,7 +206,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
       
@@ -217,7 +217,7 @@
       
     
 
-    <a href="/blog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
       
@@ -228,7 +228,7 @@
       
     
 
-    <a href="/blog/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -285,7 +285,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://paoche.gitee.io/blog/blog/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶世昌">
@@ -334,7 +334,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/Data-Structure-Algorithm/" itemprop="url" rel="index"><span itemprop="name">Data Structure & Algorithm</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Data-Structure-Algorithm/" itemprop="url" rel="index"><span itemprop="name">Data Structure & Algorithm</span></a></span>
 
                 
                 
@@ -361,7 +361,7 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/blog/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/blog/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -579,7 +579,7 @@
 <li>链式存储结构：把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续的。</li>
 </ul>
 <p>为了便于记忆，用思维导图总结一下上面所说的：</p>
-<p><img src="/blog/blog/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/10002.png" alt="image"></p>
+<p><img src="/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/10002.png" alt="image"></p>
 <p>而通过结合这两个维度中的某个结构，可以定义出来一个实际的数据结构的实现：</p>
 <p>比如线性表就是线性结构的一种实现：</p>
 <ul>
@@ -723,7 +723,7 @@
 <li>另一端成为栈底</li>
 </ul>
 <p>用一张图来看一下栈的操作：</p>
-<p><img src="/blog/blog/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/10000.png" alt="image"></p>
+<p><img src="/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/10000.png" alt="image"></p>
 <blockquote>
 <p>图源：《维基百科：Stack (abstract data type)》</p>
 </blockquote>
@@ -751,7 +751,7 @@
 <li>队列的实现</li>
 </ul>
 <p>三个部分来展开。</p>
-<h4 id="队列的定义"><a href="#队列的定义" class="headerlink" title="队列的定义"></a>队列的定义</h4><p><img src="/blog/blog/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/10001.png" alt="image"></p>
+<h4 id="队列的定义"><a href="#队列的定义" class="headerlink" title="队列的定义"></a>队列的定义</h4><p><img src="/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/10001.png" alt="image"></p>
 <blockquote>
 <p>图源：《维基百科：FIFO (computing and electronics)》</p>
 </blockquote>
@@ -806,7 +806,7 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/blog/2019/08/28/代码规范/" rel="next" title="代码规范">
+                <a href="/2019/08/28/代码规范/" rel="next" title="代码规范">
                   <i class="fa fa-chevron-left"></i> 代码规范
                 </a>
               
@@ -816,7 +816,7 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/blog/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/" rel="prev" title="数据结构 & 算法 in Swift （二）：算法概述和排序算法">
+                <a href="/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/" rel="prev" title="数据结构 & 算法 in Swift （二）：算法概述和排序算法">
                   数据结构 & 算法 in Swift （二）：算法概述和排序算法 <i class="fa fa-chevron-right"></i>
                 </a>
               
@@ -886,7 +886,7 @@
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
-          <a href="/blog/archives/">
+          <a href="/archives/">
         
           <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
@@ -898,7 +898,7 @@
       <div class="site-state-item site-state-categories">
         
           
-            <a href="/blog/categories/">
+            <a href="/categories/">
           
         
         <span class="site-state-item-count">5</span>
@@ -911,7 +911,7 @@
       <div class="site-state-item site-state-tags">
         
           
-            <a href="/blog/tags/">
+            <a href="/tags/">
           
         
         <span class="site-state-item-count">4</span>
@@ -1043,16 +1043,16 @@
 
     
   
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/blog/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-<script src="/blog/js/utils.js?v=7.4.0"></script><script src="/blog/js/motion.js?v=7.4.0"></script>
-<script src="/blog/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
 
-<script src="/blog/js/next-boot.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -1065,7 +1065,7 @@
 
 
 
-  <script src="/blog/js/local-search.js?v=7.4.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -1113,5 +1113,5 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
 
   
   
-<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/blog/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
 </html>

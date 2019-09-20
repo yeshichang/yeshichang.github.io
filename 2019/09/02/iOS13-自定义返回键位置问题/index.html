@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-<script src="/blog/js/src/photoswipe.min.js?v="></script>
-<script src="/blog/js/src/photoswipe-ui-default.min.js?v="></script>
+<script src="/js/src/photoswipe.min.js?v="></script>
+<script src="/js/src/photoswipe-ui-default.min.js?v="></script>
 
 
 
@@ -13,22 +13,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 3.9.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.4.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.4.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/blog/',
+    root: '/',
     scheme: 'Gemini',
     version: '7.4.0',
     exturl: false,
@@ -62,19 +62,19 @@
   <meta name="description" content="iOS13 beta7已经出来了，为了提前适配应用，测试机升级看看应用是否有问题，幸好坑不算多，主要问题就是用系统导航栏的位置返回按钮向右偏移过多。主要与原有项目中的一些自定义导航返回键不统一。之前项目已经对iOS11后导航栏的变化做过处理 iOS11以下通过UIBarButtonSystemItemFixedSpace进行处理，可以参考论坛的一篇文章，但是iOS13系统处理不了。 所以寻找新方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS13 自定义返回键位置问题">
-<meta property="og:url" content="https://paoche.gitee.io/blog/2019/09/02/iOS13-自定义返回键位置问题/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/index.html">
 <meta property="og:site_name" content="小星语">
 <meta property="og:description" content="iOS13 beta7已经出来了，为了提前适配应用，测试机升级看看应用是否有问题，幸好坑不算多，主要问题就是用系统导航栏的位置返回按钮向右偏移过多。主要与原有项目中的一些自定义导航返回键不统一。之前项目已经对iOS11后导航栏的变化做过处理 iOS11以下通过UIBarButtonSystemItemFixedSpace进行处理，可以参考论坛的一篇文章，但是iOS13系统处理不了。 所以寻找新方法">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://paoche.gitee.io/blog/blog/2019/09/02/iOS13-自定义返回键位置问题/10000.jpeg">
-<meta property="og:image" content="https://paoche.gitee.io/blog/blog/2019/09/02/iOS13-自定义返回键位置问题/10001.png">
-<meta property="og:image" content="https://paoche.gitee.io/blog/blog/2019/09/02/iOS13-自定义返回键位置问题/10002.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/10000.jpeg">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/10001.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/10002.png">
 <meta property="og:updated_time" content="2019-09-02T11:12:43.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS13 自定义返回键位置问题">
 <meta name="twitter:description" content="iOS13 beta7已经出来了，为了提前适配应用，测试机升级看看应用是否有问题，幸好坑不算多，主要问题就是用系统导航栏的位置返回按钮向右偏移过多。主要与原有项目中的一些自定义导航返回键不统一。之前项目已经对iOS11后导航栏的变化做过处理 iOS11以下通过UIBarButtonSystemItemFixedSpace进行处理，可以参考论坛的一篇文章，但是iOS13系统处理不了。 所以寻找新方法">
-<meta name="twitter:image" content="https://paoche.gitee.io/blog/blog/2019/09/02/iOS13-自定义返回键位置问题/10000.jpeg">
-  <link rel="canonical" href="https://paoche.gitee.io/blog/2019/09/02/iOS13-自定义返回键位置问题/">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/10000.jpeg">
+  <link rel="canonical" href="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/">
 
 
 <script id="page-configurations">
@@ -142,7 +142,7 @@
   <div class="site-meta">
 
     <div>
-      <a href="/blog/" class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">小星语</span>
         <span class="logo-line-after"><i></i></span>
@@ -173,7 +173,7 @@
       
     
 
-    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
       
@@ -184,7 +184,7 @@
       
     
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
       
@@ -195,7 +195,7 @@
       
     
 
-    <a href="/blog/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
       
@@ -206,7 +206,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
       
@@ -217,7 +217,7 @@
       
     
 
-    <a href="/blog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
       
@@ -228,7 +228,7 @@
       
     
 
-    <a href="/blog/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -285,7 +285,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://paoche.gitee.io/blog/blog/2019/09/02/iOS13-自定义返回键位置问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/iOS13-自定义返回键位置问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶世昌">
@@ -326,7 +326,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/Coding日常problem/" itemprop="url" rel="index"><span itemprop="name">Coding日常problem</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Coding日常problem/" itemprop="url" rel="index"><span itemprop="name">Coding日常problem</span></a></span>
 
                 
                 
@@ -353,7 +353,7 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/blog/2019/09/02/iOS13-自定义返回键位置问题/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/blog/2019/09/02/iOS13-自定义返回键位置问题/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/09/02/iOS13-自定义返回键位置问题/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/02/iOS13-自定义返回键位置问题/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -388,13 +388,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>iOS13 beta7已经出来了，为了提前适配应用，测试机升级看看应用是否有问题，幸好坑不算多，主要问题就是用系统导航栏的位置返回按钮向右偏移过多。主要与原有项目中的一些自定义导航返回键不统一。<br><img src="/blog/blog/2019/09/02/iOS13-自定义返回键位置问题/10000.jpeg" alt><br><img src="/blog/blog/2019/09/02/iOS13-自定义返回键位置问题/10001.png" alt></p><hr><h6 id="之前项目已经对iOS11后导航栏的变化做过处理"><a href="#之前项目已经对iOS11后导航栏的变化做过处理" class="headerlink" title="之前项目已经对iOS11后导航栏的变化做过处理"></a>之前项目已经对iOS11后导航栏的变化做过处理</h6><ol>
+        <p>iOS13 beta7已经出来了，为了提前适配应用，测试机升级看看应用是否有问题，幸好坑不算多，主要问题就是用系统导航栏的位置返回按钮向右偏移过多。主要与原有项目中的一些自定义导航返回键不统一。<br><img src="/2019/09/02/iOS13-自定义返回键位置问题/10000.jpeg" alt><br><img src="/2019/09/02/iOS13-自定义返回键位置问题/10001.png" alt></p><hr><h6 id="之前项目已经对iOS11后导航栏的变化做过处理"><a href="#之前项目已经对iOS11后导航栏的变化做过处理" class="headerlink" title="之前项目已经对iOS11后导航栏的变化做过处理"></a>之前项目已经对iOS11后导航栏的变化做过处理</h6><ol>
 <li>iOS11以下通过<code>UIBarButtonSystemItemFixedSpace</code>进行处理，可以参考<a href="https://forums.developer.apple.com/thread/80075" target="_blank" rel="noopener">论坛的一篇文章</a>，但是iOS13系统处理不了。</li>
 <li>所以寻找新方法解决这个问题，让我们先删除原来项目代码，大刀阔斧的干，要有豁出去的精神。</li>
 </ol><a id="more"></a>
 
 
-<h6 id="因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改"><a href="#因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改" class="headerlink" title="因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改"></a>因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改</h6><p>网上参考，在寻找一些解决方案。觉得这篇最合适 <a href="https://blog.csdn.net/spicyShrimp/article/details/78201042" target="_blank" rel="noopener">iOS11 导航栏按钮位置问题的解决——新</a>，简洁流畅无冗余，结合自己项目做一些修改。最主要同时解决iOS13导航栏返回键偏移的问题。<br>使用layoutMargins这个属性<br><img src="/blog/blog/2019/09/02/iOS13-自定义返回键位置问题/10002.png" alt><br>遍历图层大致可以看到时这样的结构</p>
+<h6 id="因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改"><a href="#因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改" class="headerlink" title="因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改"></a>因为是使用系统导航栏，况且项目很大，不容易去修改整个结构，遂就对系统导航进行修改</h6><p>网上参考，在寻找一些解决方案。觉得这篇最合适 <a href="https://blog.csdn.net/spicyShrimp/article/details/78201042" target="_blank" rel="noopener">iOS11 导航栏按钮位置问题的解决——新</a>，简洁流畅无冗余，结合自己项目做一些修改。最主要同时解决iOS13导航栏返回键偏移的问题。<br>使用layoutMargins这个属性<br><img src="/2019/09/02/iOS13-自定义返回键位置问题/10002.png" alt><br>遍历图层大致可以看到时这样的结构</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;_UINavigationBarContentView: <span class="number">0x7fc141607250</span>; frame = (<span class="number">0</span> <span class="number">0</span>; <span class="number">414</span> <span class="number">44</span>); layer = &lt;<span class="built_in">CALayer</span>: <span class="number">0x608000038cc0</span>&gt;&gt;</span><br></pre></td></tr></table></figure>
 
 <p>这个UINavigationBarContentView平铺在导航栏中作为iOS11的各个按钮的父视图,该视图的所有的子视图都会有一个layoutMargins被占用,也就是系统调整的占位,我们只要把这个置空就行了.那样的话该视图下的所有的子视图的空间就会变成我们想要的那样,当然为了保险起见,该视图的父视图也就是bar的layoutMargins也置空,这样 整个bar就会跟一个普通视图一样了 左右的占位约束就不存在了</p>
@@ -449,7 +449,7 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/blog/2019/08/31/My-life/" rel="next" title="My life">
+                <a href="/2019/08/31/My-life/" rel="next" title="My life">
                   <i class="fa fa-chevron-left"></i> My life
                 </a>
               
@@ -459,7 +459,7 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/blog/2019/09/05/ipa-打包shell脚本/" rel="prev" title="ipa 打包shell脚本">
+                <a href="/2019/09/05/ipa-打包shell脚本/" rel="prev" title="ipa 打包shell脚本">
                   ipa 打包shell脚本 <i class="fa fa-chevron-right"></i>
                 </a>
               
@@ -529,7 +529,7 @@
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
-          <a href="/blog/archives/">
+          <a href="/archives/">
         
           <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
@@ -541,7 +541,7 @@
       <div class="site-state-item site-state-categories">
         
           
-            <a href="/blog/categories/">
+            <a href="/categories/">
           
         
         <span class="site-state-item-count">5</span>
@@ -554,7 +554,7 @@
       <div class="site-state-item site-state-tags">
         
           
-            <a href="/blog/tags/">
+            <a href="/tags/">
           
         
         <span class="site-state-item-count">4</span>
@@ -686,16 +686,16 @@
 
     
   
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/blog/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-<script src="/blog/js/utils.js?v=7.4.0"></script><script src="/blog/js/motion.js?v=7.4.0"></script>
-<script src="/blog/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
 
-<script src="/blog/js/next-boot.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -708,7 +708,7 @@
 
 
 
-  <script src="/blog/js/local-search.js?v=7.4.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -756,5 +756,5 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
 
   
   
-<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/blog/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
 </html>

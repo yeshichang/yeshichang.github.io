@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-<script src="/blog/js/src/photoswipe.min.js?v="></script>
-<script src="/blog/js/src/photoswipe-ui-default.min.js?v="></script>
+<script src="/js/src/photoswipe.min.js?v="></script>
+<script src="/js/src/photoswipe-ui-default.min.js?v="></script>
 
 
 
@@ -13,22 +13,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 3.9.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=7.4.0">
-  <link rel="mask-icon" href="/blog/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
 
-<link rel="stylesheet" href="/blog/css/main.css?v=7.4.0">
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/blog/',
+    root: '/',
     scheme: 'Gemini',
     version: '7.4.0',
     exturl: false,
@@ -62,21 +62,21 @@
   <meta name="description" content="本篇是《数据结构 &amp;amp; 算法 in Swift》系列连载的第二篇，内容分为如下两个部分： 算法基础：简单介绍算法的概念，时间复杂度与空间复杂度，递归，作为本文第二部分的背景知识。 排序算法：结合Swift的代码实现来讲解冒泡排序，选择排序，插入排序，归并排序，快速排序。 算法基础 该部分是给那些对算法以及相关知识不了解的读者准备的，如果已经对算法的相关知识有所了解，可以略过该部分，直接看本文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构 &amp; 算法 in Swift （二）：算法概述和排序算法">
-<meta property="og:url" content="https://paoche.gitee.io/blog/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/index.html">
 <meta property="og:site_name" content="小星语">
 <meta property="og:description" content="本篇是《数据结构 &amp;amp; 算法 in Swift》系列连载的第二篇，内容分为如下两个部分： 算法基础：简单介绍算法的概念，时间复杂度与空间复杂度，递归，作为本文第二部分的背景知识。 排序算法：结合Swift的代码实现来讲解冒泡排序，选择排序，插入排序，归并排序，快速排序。 算法基础 该部分是给那些对算法以及相关知识不了解的读者准备的，如果已经对算法的相关知识有所了解，可以略过该部分，直接看本文">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://paoche.gitee.io/blog/blog/2019/08/30/数据结构%20&%20算法%20in%20Swift%20（二）：算法概述和排序算法/10005.png">
-<meta property="og:image" content="https://paoche.gitee.io/blog/blog/2019/08/30/数据结构%20&%20算法%20in%20Swift%20（二）：算法概述和排序算法/10000.png">
-<meta property="og:image" content="https://paoche.gitee.io/blog/blog/2019/08/30/数据结构%20&%20算法%20in%20Swift%20（二）：算法概述和排序算法/10001.png">
-<meta property="og:image" content="https://paoche.gitee.io/blog/blog/2019/08/30/数据结构%20&%20算法%20in%20Swift%20（二）：算法概述和排序算法/10002.png">
-<meta property="og:image" content="https://paoche.gitee.io/blog/blog/2019/08/30/数据结构%20&%20算法%20in%20Swift%20（二）：算法概述和排序算法/10003.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/30/数据结构%20&%20算法%20in%20Swift%20（二）：算法概述和排序算法/10005.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/30/数据结构%20&%20算法%20in%20Swift%20（二）：算法概述和排序算法/10000.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/30/数据结构%20&%20算法%20in%20Swift%20（二）：算法概述和排序算法/10001.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/30/数据结构%20&%20算法%20in%20Swift%20（二）：算法概述和排序算法/10002.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/30/数据结构%20&%20算法%20in%20Swift%20（二）：算法概述和排序算法/10003.png">
 <meta property="og:updated_time" content="2019-08-30T06:19:01.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构 &amp; 算法 in Swift （二）：算法概述和排序算法">
 <meta name="twitter:description" content="本篇是《数据结构 &amp;amp; 算法 in Swift》系列连载的第二篇，内容分为如下两个部分： 算法基础：简单介绍算法的概念，时间复杂度与空间复杂度，递归，作为本文第二部分的背景知识。 排序算法：结合Swift的代码实现来讲解冒泡排序，选择排序，插入排序，归并排序，快速排序。 算法基础 该部分是给那些对算法以及相关知识不了解的读者准备的，如果已经对算法的相关知识有所了解，可以略过该部分，直接看本文">
-<meta name="twitter:image" content="https://paoche.gitee.io/blog/blog/2019/08/30/数据结构%20&%20算法%20in%20Swift%20（二）：算法概述和排序算法/10005.png">
-  <link rel="canonical" href="https://paoche.gitee.io/blog/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/30/数据结构%20&%20算法%20in%20Swift%20（二）：算法概述和排序算法/10005.png">
+  <link rel="canonical" href="http://yoursite.com/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/">
 
 
 <script id="page-configurations">
@@ -144,7 +144,7 @@
   <div class="site-meta">
 
     <div>
-      <a href="/blog/" class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">小星语</span>
         <span class="logo-line-after"><i></i></span>
@@ -175,7 +175,7 @@
       
     
 
-    <a href="/blog/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
       
@@ -186,7 +186,7 @@
       
     
 
-    <a href="/blog/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
       
@@ -197,7 +197,7 @@
       
     
 
-    <a href="/blog/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
       
@@ -208,7 +208,7 @@
       
     
 
-    <a href="/blog/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
       
@@ -219,7 +219,7 @@
       
     
 
-    <a href="/blog/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
       
@@ -230,7 +230,7 @@
       
     
 
-    <a href="/blog/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -287,7 +287,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://paoche.gitee.io/blog/blog/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶世昌">
@@ -328,7 +328,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/blog/categories/Data-Structure-Algorithm/" itemprop="url" rel="index"><span itemprop="name">Data Structure & Algorithm</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Data-Structure-Algorithm/" itemprop="url" rel="index"><span itemprop="name">Data Structure & Algorithm</span></a></span>
 
                 
                 
@@ -355,7 +355,7 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/blog/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/blog/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -422,10 +422,10 @@
 <p>我们对此可以以小见大：世上千千万万种问题（算法题）可能也有类似的情况：相同的问题，相同的结果，但是执行效率缺差之千里。那么有没有什么方法可以度量某种算法的执行效率以方便人们去选择或是衡量算法之间的差异呢？ 答案是肯定的。</p>
 <p>下面笔者就向大家介绍算法所消耗资源的两个维度：时间复杂度和空间复杂度。</p>
 <h2 id="时间复杂度与空间复杂度"><a href="#时间复杂度与空间复杂度" class="headerlink" title="时间复杂度与空间复杂度"></a>时间复杂度与空间复杂度</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>算法的时间复杂度是指算法需要消耗的时间资源。一般来说，计算机算法是问题规模!n的函数f(n)，算法的时间复杂度也因此记做：</p>
-<p><img src="/blog/blog/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/10005.png" alt></p>
+<p><img src="/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/10005.png" alt></p>
 <p>常见的时间复杂度有：常数阶O(1)，对数阶O(log n），线性阶 O(n)，线性对数阶O(nlog n)，平方阶O(n^{2})，立方阶O(n^{3})，!k次方阶O(n^{k})，指数阶 O(2^{n})}。随着问题规模n的不断增大，上述时间复杂度不断增大，算法的执行效率越低。</p>
 <p>拿其中几个复杂度做对比：</p>
-<p><img src="/blog/blog/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/10000.png" alt></p>
+<p><img src="/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/10000.png" alt></p>
 <p>从上图中我们可以看到，平方阶O(n^{2})随着n值的增大，其复杂度近乎直线飙升；而线性阶 O(n)随着n的增大，复杂度是线性增长的；我们还可以看到常数阶 O(1)随着n增大，其复杂度是不变的。</p>
 <p>参考上一节的求和问题，我们可以看出来遍历求和的算法复杂度是线性阶O(n)：随着求和的最大数值的大小而线性增长；而等差数列求和算法的复杂度为常数阶 O(1)其算法复杂度与输入n值的大小无关。</p>
 <p>读者可以试着想一个算法的复杂度与输入值n的平方成正比的算法。</p>
@@ -452,7 +452,7 @@
 <p>在上面的代码里，<code>factorial</code>函数调用了它自己，并且在n&lt;2的时候返回了1；否则继续调用自己。</p>
 <p>从代码本身其实不难理解函数调用的方式，但是这个6究竟是怎么算出来的呢？这就涉及到递归的实现原理了。</p>
 <h3 id="递归的实现原理"><a href="#递归的实现原理" class="headerlink" title="递归的实现原理"></a>递归的实现原理</h3><p>递归的调用实际上是通过调用栈（callback stack）来实现的，笔者用一张图从factorial(3)开始调用到最后得出6这个顺序之间发生的事情画了出来：</p>
-<p><img src="/blog/blog/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/10001.png" alt><br>由上图可以看出，整个递归的过程和栈的入栈出栈的操作非常类似：橘黄色背景的圆角矩形代表了栈顶元素，也就是正在执行的操作，而灰色背景的圆角矩形则代表了其余的元素，它们的顺序就是当初被调用的顺序，而且在内容上保持了当时被调用时执行的代码。</p>
+<p><img src="/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/10001.png" alt><br>由上图可以看出，整个递归的过程和栈的入栈出栈的操作非常类似：橘黄色背景的圆角矩形代表了栈顶元素，也就是正在执行的操作，而灰色背景的圆角矩形则代表了其余的元素，它们的顺序就是当初被调用的顺序，而且在内容上保持了当时被调用时执行的代码。</p>
 <p>现在笔者按照时间顺序从左到右来说明一下整个调用的过程：</p>
 <ul>
 <li>最开始传入3之后，3满足了n&gt;=2的条件，继续调用自己：3 * factorial(2) ，入栈。</li>
@@ -828,7 +828,7 @@
 <p>我们可以看到差距是非常明显的，插入排序的性能是选择排序的性能的近乎10倍</p>
 <h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><h3 id="算法讲解-4"><a href="#算法讲解-4" class="headerlink" title="算法讲解"></a>算法讲解</h3><p>归并排序使用了算法思想里的<strong>分治思想</strong>（divide conquer）。顾名思义，就是将一个大问题，分成类似的小问题来逐个攻破。在归并排序的算法实现上，首先逐步将要排序的数组等分成最小的组成部分（通常是1各元素），然后再反过来逐步合并。</p>
 <p>用一张图来体会一下归并算法的实现过程： </p>
-<p><img src="/blog/blog/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/10002.png" alt></p>
+<p><img src="/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/10002.png" alt></p>
 <p>上图面的虚线箭头代表拆分的过程；实线代表合并的过程。仔细看可以发现，拆分和归并的操作都是重复进行的，在这里面我们可以使用递归来操作。</p>
 <p>首先看一下归并的操作：</p>
 <p>归并的操作就是把两个数组（在这里这两个数组的元素个数通常是一致的）合并成一个完全有序数组。</p>
@@ -938,7 +938,7 @@
 <p>以上，介绍完了快速排序在Swift中的5中实现方式。</p>
 <h1 id="最后的话"><a href="#最后的话" class="headerlink" title="最后的话"></a>最后的话</h1><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文讲解了算法的一些基本概念以及结合了Swift代码的实现讲解了冒泡排序，选择排序，插入排序，归并排序，快速排序。相信认真阅读本文的读者能对这些算法有进一步的了解。</p>
 <h2 id="关于算法学习的思考"><a href="#关于算法学习的思考" class="headerlink" title="关于算法学习的思考"></a>关于算法学习的思考</h2><p>关于算法的学习，笔者有一些思考想分享出来，也有可能有不对的地方，但笔者觉得有必要在这里说出来，希望可以引发读者的思考：</p>
-<p><img src="/blog/blog/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/10003.png" alt></p>
+<p><img src="/2019/08/30/数据结构 & 算法 in Swift （二）：算法概述和排序算法/10003.png" alt></p>
 <p>上图的Question是指问题；Mind是指想法，或者解决问题的思路；Code是指代码实现。</p>
 <p>在阅读资料或书籍的算法学习过程，往往是按照图中1，2，3这些实线的路径进行的：</p>
 <ul>
@@ -998,7 +998,7 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/blog/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/" rel="next" title="数据结构 & 算法 in Swift （一）：Swift基础和数据结构">
+                <a href="/2019/08/29/数据结构 & 算法 in Swift （一）：Swift基础和数据结构/" rel="next" title="数据结构 & 算法 in Swift （一）：Swift基础和数据结构">
                   <i class="fa fa-chevron-left"></i> 数据结构 & 算法 in Swift （一）：Swift基础和数据结构
                 </a>
               
@@ -1008,7 +1008,7 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/blog/2019/08/31/iPhone-A12芯片录制编码解码失败问题/" rel="prev" title="iPhone A12芯片录制编码解码失败问题">
+                <a href="/2019/08/31/iPhone-A12芯片录制编码解码失败问题/" rel="prev" title="iPhone A12芯片录制编码解码失败问题">
                   iPhone A12芯片录制编码解码失败问题 <i class="fa fa-chevron-right"></i>
                 </a>
               
@@ -1078,7 +1078,7 @@
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
-          <a href="/blog/archives/">
+          <a href="/archives/">
         
           <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
@@ -1090,7 +1090,7 @@
       <div class="site-state-item site-state-categories">
         
           
-            <a href="/blog/categories/">
+            <a href="/categories/">
           
         
         <span class="site-state-item-count">5</span>
@@ -1103,7 +1103,7 @@
       <div class="site-state-item site-state-tags">
         
           
-            <a href="/blog/tags/">
+            <a href="/tags/">
           
         
         <span class="site-state-item-count">4</span>
@@ -1235,16 +1235,16 @@
 
     
   
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/blog/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-<script src="/blog/js/utils.js?v=7.4.0"></script><script src="/blog/js/motion.js?v=7.4.0"></script>
-<script src="/blog/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
 
-<script src="/blog/js/next-boot.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -1257,7 +1257,7 @@
 
 
 
-  <script src="/blog/js/local-search.js?v=7.4.0"></script>
+  <script src="/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -1305,5 +1305,5 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
 
   
   
-<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/blog/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
 </html>
