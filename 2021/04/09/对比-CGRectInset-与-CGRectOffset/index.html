@@ -59,14 +59,21 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小子伊">
-<meta property="og:url" content="http://yoursite.com/archives/2019/09/index.html">
+  <meta name="description" content="CGRectInset 与 CGRectOffset 都是通过参数改变CGRect并返回一个CGRect类型的数据。总结出两者的区别在于：CGRectInset会进行平移和缩放两个操作。CGRectOffset做的只是平移。先把苹果的官方文档做简要解释：CGRect CGRectInset(CGRect rect, CGFloat dx, CGFloat dy)：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对比 CGRectInset 与 CGRectOffset">
+<meta property="og:url" content="http://yoursite.com/2021/04/09/对比-CGRectInset-与-CGRectOffset/index.html">
 <meta property="og:site_name" content="小子伊">
+<meta property="og:description" content="CGRectInset 与 CGRectOffset 都是通过参数改变CGRect并返回一个CGRect类型的数据。总结出两者的区别在于：CGRectInset会进行平移和缩放两个操作。CGRectOffset做的只是平移。先把苹果的官方文档做简要解释：CGRect CGRectInset(CGRect rect, CGFloat dx, CGFloat dy)：">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2021/04/09/对比-CGRectInset-与-CGRectOffset/10000.jpeg">
+<meta property="og:image" content="http://yoursite.com/2021/04/09/对比-CGRectInset-与-CGRectOffset/10001.jpeg">
+<meta property="og:updated_time" content="2021-04-09T06:49:37.544Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小子伊">
-  <link rel="canonical" href="http://yoursite.com/archives/2019/09/">
+<meta name="twitter:title" content="对比 CGRectInset 与 CGRectOffset">
+<meta name="twitter:description" content="CGRectInset 与 CGRectOffset 都是通过参数改变CGRect并返回一个CGRect类型的数据。总结出两者的区别在于：CGRectInset会进行平移和缩放两个操作。CGRectOffset做的只是平移。先把苹果的官方文档做简要解释：CGRect CGRectInset(CGRect rect, CGFloat dx, CGFloat dy)：">
+<meta name="twitter:image" content="http://yoursite.com/2021/04/09/对比-CGRectInset-与-CGRectOffset/10000.jpeg">
+  <link rel="canonical" href="http://yoursite.com/2021/04/09/对比-CGRectInset-与-CGRectOffset/">
 
 
 <script id="page-configurations">
@@ -74,13 +81,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
-  <title>归档 | 小子伊</title>
+  <title>对比 CGRectInset 与 CGRectOffset | 小子伊</title>
   
 
 
@@ -268,213 +275,209 @@
         <div class="content-wrap">
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        
-        
-        
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/09/对比-CGRectInset-与-CGRectOffset/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶世昌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://github.com/yeshichang/Times_Test/blob/master/Source/10000.jpeg?raw=true">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小子伊">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">对比 CGRectInset 与 CGRectOffset
+
           
-        
-        <span class="collection-header">嗯..! 目前共计 20 篇日志。 继续努力。</span>
-      </div>
-      
+        </h1>
 
-      
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-  
-  
+              
+                
+              
 
+              <time title="创建时间：2021-04-09 14:36:14 / 修改时间：14:49:37" itemprop="dateCreated datePublished" datetime="2021-04-09T14:36:14+08:00">2021-04-09</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
   
+  <span class="post-meta-item">
     
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
         
-          <a class="post-title-link" href="/2019/09/20/Loves-essay/" itemprop="url">
-            <span itemprop="name">Love essays</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-20T10:11:06+08:00"
-              content="2019-09-20">
-          09-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/04/09/对比-CGRectInset-与-CGRectOffset/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2021/04/09/对比-CGRectInset-与-CGRectOffset/" itemprop="commentCount"></span></a>
+  </span>
   
   
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>1.5k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>1 分钟</span>
+            </span>
+          
 
-  
+        </div>
+      </header>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/09/19/随笔日志/" itemprop="url">
-            <span itemprop="name">随笔日志</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-19T18:47:55+08:00"
-              content="2019-09-19">
-          09-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/09/07/学习英文/" itemprop="url">
-            <span itemprop="name">Study English</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-07T13:58:40+08:00"
-              content="2019-09-07">
-          09-07
-        </time>
-      </div>
-
-    </header>
-  </article>
+      
+        <p><code>CGRectInset</code> 与 <code>CGRectOffset</code> 都是通过参数改变<code>CGRect</code>并返回一个<code>CGRect</code>类型的数据。总结出两者的区别在于：<code>CGRectInset</code>会进行平移和缩放两个操作。<code>CGRectOffset</code>做的只是平移。</p><p>先把苹果的官方文档做简要解释：</p><p><code>CGRect CGRectInset(CGRect rect, CGFloat dx, CGFloat dy)：</code></p><a id="more"></a>
 
 
+<p>通过第二个参数 dx 和第三个参数 dy 重置第一个参数 rect 作为结果返回。重置的方式为，首先将 rect 的坐标（origin）按照(dx,dy) 进行平移，然后将 rect 的大小（size） 宽度缩小2倍的 dx，高度缩小2倍的 dy。</p>
+<p><code>CGRect CGRectOffset(CGRect rect, CGFloat dx, CGFloat dy)：</code></p>
+<p>rect 按照（dx,dy）进行平移。</p>
+<p>两者的具体效果如何呢？下面通过代码和程序运行结果做形象解释。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)testCGRectInset</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">UIView</span> *view1=[[<span class="built_in">UIView</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>)];</span><br><span class="line">    [view1 setBackgroundColor:[<span class="built_in">UIColor</span> yellowColor]];<span class="comment">//view1 设置为黄色</span></span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:view1];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据view1的大小变换后创建view2;</span></span><br><span class="line">    <span class="built_in">CGRect</span> view2Rect=<span class="built_in">CGRectInset</span>(view1.frame, <span class="number">20</span>, <span class="number">20</span>);</span><br><span class="line">    <span class="built_in">UIView</span> *view2=[[<span class="built_in">UIView</span> alloc]initWithFrame:view2Rect];</span><br><span class="line">    [view2 setBackgroundColor:[<span class="built_in">UIColor</span> redColor]];<span class="comment">//view2 设置为红色</span></span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:view2];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  
-  
+<p>如下图左边第一个所示，红色视图首先按照我们给的参数做了平移 然后对大小做了缩放。这里我给的参数是正数，如果换成负数，则向反方向平移并做放大，如下图第二张所示，视图层级关系如图第三张。</p>
+<p><img src="/2021/04/09/对比-CGRectInset-与-CGRectOffset/10000.jpeg" alt></p>
+<p>同样的思路，对于 CGRectOffset ，有：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>)testCGRectOffset</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">UIView</span> *view1=[[<span class="built_in">UIView</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>)];</span><br><span class="line">    [view1 setBackgroundColor:[<span class="built_in">UIColor</span> yellowColor]];<span class="comment">//view1 设置为黄色</span></span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:view1];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据view1的大小变换后创建view2;</span></span><br><span class="line">    <span class="built_in">CGRect</span> view2Rect=<span class="built_in">CGRectOffset</span>(view1.frame, <span class="number">20</span>, <span class="number">20</span>);</span><br><span class="line">    <span class="built_in">UIView</span> *view2=[[<span class="built_in">UIView</span> alloc]initWithFrame:view2Rect];</span><br><span class="line">    [view2 setBackgroundColor:[<span class="built_in">UIColor</span> redColor]];<span class="comment">//view2 设置为红色</span></span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:view2];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/09/05/ipa-打包shell脚本/" itemprop="url">
-            <span itemprop="name">ipa 打包shell脚本</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-05T15:39:55+08:00"
-              content="2019-09-05">
-          09-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-  
-  
-
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/09/02/iOS13-自定义返回键位置问题/" itemprop="url">
-            <span itemprop="name">iOS13 自定义返回键位置问题</span>
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-02T17:53:05+08:00"
-              content="2019-09-02">
-          09-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+<p>运行结果如下所示（包括参数是正数和负数两种情况）： </p>
+<p><img src="/2021/04/09/对比-CGRectInset-与-CGRectOffset/10001.jpeg" alt></p>
+<p>由上图可以形象地看出，该方法只是做了平移操作，没有缩放。</p>
 
     </div>
+
+    
+    
+    
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="https://github.com/yeshichang/Times_Test/blob/master/Source/wechat_public_number.jpg?raw=true" alt="叶世昌 wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      
+        
+      
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="https://github.com/yeshichang/Times_Test/blob/master/Source/wechat.jpg?raw=true" alt="叶世昌 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="https://github.com/yeshichang/Times_Test/blob/master/Source/alipay.jpg?raw=true" alt="叶世昌 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2020/06/30/这书能让你戒烟-43-结尾/" rel="next" title="这书能让你戒烟<43-结尾>">
+                  <i class="fa fa-chevron-left"></i> 这书能让你戒烟<43-结尾>
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
           
+    
+    <div class="comments" id="comments"></div>
+  
 
         </div>
           
@@ -489,6 +492,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
