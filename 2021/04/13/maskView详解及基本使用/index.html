@@ -59,19 +59,24 @@
   };
 </script>
 
-  <meta name="description" content="别看了，有密码">
-<meta name="keywords" content="日常">
+  <meta name="description" content="UIView有个maskView属性(与layer.mask 使用一样)，最近研究了一下，在此分享下。官方定义： An optional view whose alpha channel is used to mask a view’s content.(一个通过alpha通道来掩盖一个view的内容的可选view。)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My life">
-<meta property="og:url" content="http://yoursite.com/2019/08/31/My-life/index.html">
+<meta property="og:title" content="maskView详解及基本使用">
+<meta property="og:url" content="http://yoursite.com/2021/04/13/maskView详解及基本使用/index.html">
 <meta property="og:site_name" content="小子伊">
-<meta property="og:description" content="别看了，有密码">
+<meta property="og:description" content="UIView有个maskView属性(与layer.mask 使用一样)，最近研究了一下，在此分享下。官方定义： An optional view whose alpha channel is used to mask a view’s content.(一个通过alpha通道来掩盖一个view的内容的可选view。)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-12T09:45:50.929Z">
+<meta property="og:image" content="http://yoursite.com/2021/04/13/maskView详解及基本使用/1.jpg">
+<meta property="og:image" content="http://yoursite.com/2021/04/13/maskView详解及基本使用/2.png">
+<meta property="og:image" content="http://yoursite.com/2021/04/13/maskView详解及基本使用/3.png">
+<meta property="og:image" content="http://yoursite.com/2021/04/13/maskView详解及基本使用/4.png">
+<meta property="og:image" content="http://yoursite.com/2021/04/13/maskView详解及基本使用/5.png">
+<meta property="og:updated_time" content="2021-04-13T10:17:57.829Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My life">
-<meta name="twitter:description" content="别看了，有密码">
-  <link rel="canonical" href="http://yoursite.com/2019/08/31/My-life/">
+<meta name="twitter:title" content="maskView详解及基本使用">
+<meta name="twitter:description" content="UIView有个maskView属性(与layer.mask 使用一样)，最近研究了一下，在此分享下。官方定义： An optional view whose alpha channel is used to mask a view’s content.(一个通过alpha通道来掩盖一个view的内容的可选view。)">
+<meta name="twitter:image" content="http://yoursite.com/2021/04/13/maskView详解及基本使用/1.jpg">
+  <link rel="canonical" href="http://yoursite.com/2021/04/13/maskView详解及基本使用/">
 
 
 <script id="page-configurations">
@@ -85,7 +90,7 @@
   };
 </script>
 
-  <title>My life | 小子伊</title>
+  <title>maskView详解及基本使用 | 小子伊</title>
   
 
 
@@ -282,7 +287,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/31/My-life/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/13/maskView详解及基本使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶世昌">
@@ -294,7 +299,7 @@
       <meta itemprop="name" content="小子伊">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">My life
+        <h1 class="post-title" itemprop="name headline">maskView详解及基本使用
 
           
         </h1>
@@ -310,19 +315,11 @@
                 
               
 
-              <time title="创建时间：2019-08-31 16:55:17" itemprop="dateCreated datePublished" datetime="2019-08-31T16:55:17+08:00">2019-08-31</time>
+              <time title="创建时间：2021-04-13 18:02:18 / 修改时间：18:17:57" itemprop="dateCreated datePublished" datetime="2021-04-13T18:02:18+08:00">2021-04-13</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-12 17:45:50" itemprop="dateModified" datetime="2021-04-12T17:45:50+08:00">2021-04-12</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -331,7 +328,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Life/" itemprop="url" rel="index"><span itemprop="name">Life</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
 
                 
                 
@@ -358,7 +355,7 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/08/31/My-life/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/31/My-life/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2021/04/13/maskView详解及基本使用/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2021/04/13/maskView详解及基本使用/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -370,7 +367,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>395</span>
+              <span>2.1k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -380,7 +377,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
           
 
@@ -393,19 +390,41 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <div id="hbe-security">
-  <div class="hbe-input-container">
-  <input type="password" class="hbe-form-control" id="pass" placeholder="陛下，请输入密码查看.">
-    <label for="pass">陛下，请输入密码查看.</label>
-    <div class="bottom-line"></div>
-  </div>
-</div>
-<div id="decryptionError" style="display: none;">Incorrect Password!</div>
-<div id="noContentError" style="display: none;">No content to display!</div>
-<div id="encrypt-blog" style="display:none">
-U2FsdGVkX1+dmjxoxYZiPrIU2X9KMn3XZwYDzpr0I/f4ZOTdIxnB6c2OdGvzFSpmYQPrvQnFMp88vu0wdXSN/UpIJihRDfnBivJhHSOpy4RPsF75473sxcxmtKlltc27y+/CkJE8sjSSIvi7aiJRb8p3mSVr+hKdAKNJVvxgitKBaci7IrVmIYL4EOZ+/HpoSAFm1QunrsArEaTdtkQ0Ro1vvkj5dQToaNW0rqhL0TZE5q8QIBf7hlAFbmEv0w/kaoyWe86gQis9QtEfmgCbZBb5OcZ49GYqycyQDl6whxiJcO3IMkczEhuWxu80sukI9XmbLQgcP/J/EAx2CMgyuVPg2/D8faOs0t0Nh3VT5Hh+6Kol93xfQBSxKnTbvlsFlv0DJrsbCk91tLKNeDit9JsnpIxVDkyI83OFEOCxJndtFExFTxU/pVo4T5wiK2aN99F4FiCVoX1lTSqILe6LfTVepxn8M52Wlti80bU0Nn6jLp3acU+e8pk1DYjvf8fFg27mRezTHlJRlzxZtp1Jlt8cS+SKEm9Tsb1oexLK6cUw6IKb3g1Tm+MLMgGYDeCOpfdNR/9TRefd+qnR1XnutTUl/CchXOWm0/85bkClIpVdWn4uGcL24+NVAMK7HOHb2dbGLgn8oDMwgMw/KmWbh9G7iUXWEF1SUmurs+0LeSDg4G5B47o51qhtD31uLnw2J8u7G1gJgZRv6EEcPtO5S/77c2AZQMAsk43rgMmmSze7MERzIYmhDqJTc73fzVAFjsswxYm619Yh7/B+kjHF6fDohS5ujYDSnoDnJ7tmu6/EdJvg41j+2/719b3WWJ3sHi0lRa+NKMQa8YXfCIuqDTEaY30H9Q9zvVoCimMNGkTp+y1rr8tH1urDcpUBDerDqaeq6ECF0UIl8c+nfnTyGCv1YUveDzMhdfdgSdhIhyPuatp2Ou9B8c2oZ2M//yTAfv5aX8uSBQVrPp/VexHFdMZula8MUx8/6qtUJB6XKaCfDE/KWbamcmd6xsKE1OIJswBPdOHyoygr4kXKWCW2uWfy1fLLvaRF2XCfbbMWLrki0om82L7V4u1+2s1Et0OLHzNwFiH6SCyhxwKlJGHDPpwiNZJR3p9FoBjeT65uAwiyBHyZuwrYSdznsAcv3YWPGFlvo46/5+CAo7hxsz+Z0UfjhA+YiY1znYN0CqaXeYvb0mxXGr2ZldNEkC7kCOtQHpixSMzcGGEPCct6X6g4KUsDr5tlLZKAYRMzDvjVij9fI++QVE7G6z33pWeQiZ4yvgV7y4om1A7eFmajIhl5kUd1caI/vwddv2tRyxz025jgLzY/+UxCxchYQHiNV/K6xFGr8bYSs6WAeWQ8gU8lhcisErsDIyzc8vLuQ9CPI6Z6hcsprpCn/FhpuL5OFBUJWhJwZ+L06ID59eTG8cwUMG/ytqdgzREtwzHOkJI2HVN6gchFG2EQ4tePQA+kjh6NRnShXz9F0twjgLbbvRBHt0XEcedGD25KVvS/yzxg4pl38LmSnrkt+f35uyBpxRmMH9Z2Cx2CLE7337ZbNT3AfS8RH+t5TvSD0ZzA9hxjhgZuzMjmcrPPPCy5eUTNRIME7y8DAch13HGHIqSOQfyH1icdiMiNpVOoguubaC6/4YDizyxNf5xg5y14eGJeGdrRb6kN3UozI22D+WYjEQNmTVCvHOqHXimB7tPs3XQnabeANwdXqm+TQm90Y+wneEEcrpKLuldH6teFqn7LTq1BJfuKsLE5DepKJ78QWj/gpIBo4wW8WvXhaoM7SxlXAv/i+Z3xSGb/2r7vcfFzC29xpuFagppXm/A0laXQv4W5ihOQVdODO+2F4Riyw0+d7cOPIY1Q0ATYroNpErX7cRtA/rltbigZJcSc7YHcvNtoDdLtQsNluyIxvJx1FUF3p8z+wDEvH9fcspa8dvN+cPt1oG/fanUmzCMK+Y0I/k5kLPyiVvhBsyboxz+D1x0IX9WJqMSq3CkOPCEZ2Z3dzQmBieouEcT0KPw18+9vUxnshNp2reWZRXP58yEmsvawVq1LWWaqfQRKjsnqmzhAQmAyif/lVCY3JvfkHqvYhH5gSFnQI8UGJELohNSeu8mFvNGzk44CSPZaPXiwDtygs078V72YMQ/eKIqqV36l1ffOEs8nptMm2klwsEcyglDcolXN7Yr1EHFk7uLCXGSX0KECzno+r6DDcb2SRJao/tXdR12QFcpgC2+LSvHn5CChyzvKcIdrYCD+XSyqDT65z8Wp0ziG5YVQp5IyCnvZJaB0KUuRuSvWVLefsPbKJydpChW+BSa8Cbt/PgoN3qjHTejBkTBmbtmIUdYJyNd6wHico4b6/p5+kA2ch05AolQJ050P3QWeyXn+SQol4/74XvdA675/gz3bOBJaK4zlPJjupirZVHO9KBK2XVd/jM4L54AL6bipnJq8HNK/dWWX/Wmx+U5cn6Uh9IZBfeG/uQ81ApIeQKRKFkcVa0iv7cz55OzZyU6EfkuyD6z+JIMto/BEifEE8N3tpJNI7Iiy8h1YKZwYk/wuJhRt3dsoeibGfELwdoFt3unhIfUp8qaxwpRJcaG1kH56hsCeq9hV2gp6PI+cRFidgOG4yXsrSx6l/pn3l9miOydqnkGgxq3nFFEXBfyoIGb8MQVGh3oVeB8lwnPN0faK4cqb6ipB0jtxJwGw20P3/9lV+45Ssa2pmcDbEpHWlNZYZHzSsAsQtPJFdsZ4Dx6tODt91DTDatdfIBOUbS3+ZRnQTdBP+mSDLqonUFgbd5OxP2TY7KDmq6GpobLfsXhSrDIyFL5LB3nDKa9VcmlZdyi7Qe6JZEJLitlk1tznEZ8Wg++DLEYtjsMxJyMT0ToxWpTZ/ppu5h8rjtMTLASeGPhhqJTqCGsKmifa6Fma7QKGwFkJ1qKdJisoFT4BKDBknTPVzDTsOmSI5U5Tlg7RCvjk9Pp4bn+Q4eVXY6870LczhCA1xoKohORo+9BXgT6CbODyH7lifZKHZGzDe5NFc77h4gUjNemFqMWvoj0zx5zZAB/ofccsm/jee6cJXNyioLixdBxSW3rg95Sx1jA9FdjHbP7VBOvn5RqTn+Pl9sjJWD//yOBp+DuJ3eqex0SMBCxbbFWQ43uc60ha15pO/7IiNQdwJksxR4HRDQr3DZLyTJ1O9YEmtYOktyZ5nWNoEflJ3DLkkWBnuTvkYQpRGVjXLAKkWM5M6U55QSPwfTbZ7ZCv/FntLuy3LenCrF0BPwiHQR/EBKjJFuThPYWD2Br3+O97JP3E8JAXc/SkEWEoWI4S2HmqmOXSR7JoYVmDM2jQtO3I/TMP6h+iztGtVVr4rPHDM2PXJlLKSU13zj7tnj8Y1r1covgv2R8xAOxDh8rR2IWfjFG1tDbCWh27zhBb8ZVbcqV0yhSigEgqPhme0YHjiQZMg5SIbpik14iJD373MYjSwEbk4ZWQ8xy24qlpf7KEjc5r29r2y+OM24Z0YLHRbNVvz64KCMvwAQio7Af/481kQ3edrBEYykjqH4bMcQ9GmR97Tal2IrNbrDJX8iXN7DY5MWm3+fEZDbp9yyh99izdDmyAUdCzt490D9lZClgL/Pfwfl08ysB6FGroAJ7R6ZvOShZKz27vUs70zFvBEd4uTywRemYEH19VpJZNWiymet6FOj48IbpfIjAKv1NSfFgwBmZnKoc4TCLIQs2TZsW4lgJyA01wSYsLXIFXHm7KstVYBjyMW+j3bQxOq/f40SgA6HWrWRmnPBeWNyFm3G1Op1QRIvWu9OjYYqnV0YEYlsFcclrLotKCLxgwMY6jOCEWo0Acvfn4jd1AxtMGu/jjka1BkQGOi73rFtAT1fUtqLXNha+nEo5SK/ASnEtW9ADBHb4VSmo7WOZN2oWFFoI68d2aH3apNsV37vWOUo0zzKs7/d0PXbKyGs22zbCt/80cbSyJBtUjE5eKJdUDVYJHk55oG+IhBlC30cZx1oS54WAM/MYJsjspqMRao+syfn7C8LsG8HpVleN+U08sGm4U+wvKP7OVLEsWx7pE3xqE/BhTQ12W2mnu7vGrMwipIwd4xAI9rhPErKK6tjv00UXjK1GDhqbwA0dckquYqIRiWrgHE7/XqLnxvDjHiC5VCBNcjhQz9AHlYrQbCOCuOFlpDugEE4PTmnMpJyoe7fE4dvEAno4RZQBw470XwxyJMIHfsVbmh0zU0ckvJero1p182Yz2R4dksThlkTQkDsHiRYq6j2x6Vtv58c6sryjHX28elEzlZEQtpjTk6mPr1bFR+Q8hte7tDlGNrMmcXMIK5ZrAqIfG23YtjL4POZxDpsJrAQGv+zNTnWNvmWCw6154c3Jko6cz6yVaYmQeuCA5+S9UaymdEHK6zgZoPnZrpgdCUxrTRj013YgiSe6K+cExRy3z9asbfvjXnbv5Hswhsgjyanxg2bgOLNUvDABcOwrLu0rhHby0xqkiZiltDlMVqim0AzjrYqCuAqzHntZj1c8fd1h3ZsFqu+3wxKSsOzmEGyguk1HB3fniQwO0YCghDh4boYkXlD8+nfpVuqh8flj0WegIgbnGc5RkYGYHdP7EBn+DOxkNbN9y0/8/3oUBpU2Haelb8nn8tSQgdULNqNQ87+/kteVOsoSpXKyVQtGMQlwl9twMsWQVHgwI7Gn1Y3bLZjZaBXlYCrSPQObo3kCdo5eOqVA+W2PfvP21/QkndoTXm5YfXx2rw6oczdpw1pUfRjOYCqMYiPFXtbd98WaBzdCaOzY33ENKq3dtZq4b/elol/JWM54j/ZfKP+JjT0OBqmdJQZ9JAlFgulOdLXeeYwqFUjit5eOWRk9S3TX2Hv67XrH2Ba2FkgtmRlNb+tTFf00Ej9y4iAh/oBwFqVkniJ4fSiJegdfHYONeZPPkPbbeUXrCNEljJQ2+9PA2U7HUezvRsDRUveIoWGnJL9LWPBZ8ofobsgEslht2Nfone3ggiQl5qkWg1S1G+eIQjarHMMdbCM4ODLsDupKonRCzjBsiz7dTNiEN8NxiH/nHTbqv5idgV+LNectucDxpP7csKv60moW4yAdkwhhntdapHoI3DAoe0dmuPbvm6UWKDlDdgSU8O/U/NebemKFM8wYd/dJvy2GGpA4VMqJQvKElQeyqQky7XE8HYxto7t4DW/oh6dVcbtQOeDgZ2x4H572bDwjMwFBArGJR8fsUMX1WuS1gYB2diCezg3QJjA+P8jSEzT1UBAqVNBPonzfmdceX1Pjt8LpwFVLNvqVq1aDf88LvEiiBn7bQM2aD1vDtxTk3RlFQMGbVNjpi+7dH9XHGL05mktKceES7r913jw81C9CjdOMXTdqqI1MlWzc8a7WJLzqpmNEEX9jWvo3FCSoF3xGEx9IY15vctXyBbQyb4RpHgf67BLDnnxNyJyePHsJtLTD0jlg74XpCJbD7ZTVQjzz2DQtcXYYVjAm7xqoCGI4kIfJWsPF+0jms/8mf9ACg2tgjbCRepkvmeRBxhLfvWqGODz034tvJhdNNIFdWNRLQEQUwjitTe/JmXpNi5qNOR0Mc9ONlN6+ro0ygI5htidwj0XZjeDIchgOaQxMc9lbVxDDU+BDN8xtiI0vOrb7dzfIPgBQWAYKSRvLLa65IgDwR9KDj1120BPrOexEGl1rgomEWPp/OuYEHfc/vUkBhWUD7qCAqfMHnAPPvwe1rrTQSH/aeiM79o5dH2ZJ3BUCvcq7ZAHJ9s7s5jjWIPha8QeScdIZXqQnqC9+GVy61iYVi
-</div>
-<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+        <p>UIView有个maskView属性(与layer.mask 使用一样)，最近研究了一下，在此分享下。</p><p>官方定义：</p><blockquote>
+<p>An optional view whose alpha channel is used to mask a view’s content.(一个通过alpha通道来掩盖一个view的内容的可选view。)</p>
+</blockquote><a id="more"></a>
+
+
+<p><em>阿尔法通道(Alpha Channel) 阿尔法通道是一个8位的灰度通道，该通道用256级灰度来记录图像中的透明度信息，定义透明、不透明和半透明区域，其中黑表示透明，白表示不透明，灰表示半透明。</em></p>
+<p>Alpha通道作用:<br><em>阿尔法通道(Alpha Channel)是指一张图片的透明和半透明度。</em></p>
+<p>废话不多说，官方定义太抽象，书读太少，不懂，接下来我直接上代码来解释。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> blackColor]; </span><br><span class="line"><span class="built_in">UIView</span> *view = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">60</span>)];</span><br><span class="line">view.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</span><br><span class="line">[<span class="keyword">self</span>.view addSubview:view];</span><br><span class="line">    </span><br><span class="line"><span class="built_in">UIView</span> *maskView = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">50</span>, <span class="number">40</span>)];</span><br><span class="line">maskView.backgroundColor = [<span class="built_in">UIColor</span> redColor];</span><br><span class="line">view.maskView = maskView;</span><br></pre></td></tr></table></figure>
+
+<p>先用keynote制作的层次图来解释，等下再上效果图<br><img src="/2021/04/13/maskView详解及基本使用/1.jpg" alt="keynote"></p>
+<p>UIView 代表控制器的View</p>
+<p>view UIView的子view</p>
+<p>maskView view的maskView</p>
+<p>注意：<br><strong>maskView弄成红色背景只是为了更好说明，实际效果图maskView的颜色不显示，最终效果图怎么显示只跟maskView每个point的alpha相关。</strong></p>
+<ol>
+<li><p>当一个view设置了maskView后，那么它只会显示与maskView重叠部分，即在此图中只会显示maskView部分(maskView跟view没有层次，可以理解maskView嵌在View里)</p>
+</li>
+<li><p>对于maskView与View重叠部分怎么显示？<br>可以这样理解，是将maskView每个point的alpha赋值给View的重叠部分相对应的point，这样view的重叠每个point都有个alpha值了，view重叠部分就可能显示多种透明色。</p>
+</li>
+</ol>
+<p>就如图上图而言，由于maskView颜色的alpha为1.0，那么与view重叠部分的alpha也应该为1.0(即重叠部分没变化)。</p>
+<p>效果图：<br><img src="/2021/04/13/maskView详解及基本使用/2.png" alt="效果图"></p>
+<ol>
+<li>只显示重叠部分</li>
+<li>maskView每个point的alpha为1.0，所以与view重叠部分颜色不变，即白色</li>
+</ol>
+<p>如果上一个例子还没明白，再上一个Demo来说明</p>
+<p>两个切图：<br><img src="/2021/04/13/maskView详解及基本使用/3.png" alt="图一"><br><img src="/2021/04/13/maskView详解及基本使用/4.png" alt="图二"></p>
+<p>图1是一半纯灰色，一半 0.5 的绿， 图2背景是白色.</p>
+<p>配合上一个例子的理论知识，再看代码，然后看效果图</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> blackColor];</span><br><span class="line"><span class="built_in">UIImageView</span> *imageView = [[<span class="built_in">UIImageView</span> alloc] initWithImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"head"</span>]];</span><br><span class="line">imageView.origin = <span class="built_in">CGPointMake</span>(<span class="number">10</span>, <span class="number">40</span>);</span><br><span class="line">[<span class="keyword">self</span>.view addSubview:imageView];</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIImageView</span> *imageView1 = [[<span class="built_in">UIImageView</span> alloc] initWithImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"head"</span>]];</span><br><span class="line">imageView1.origin = <span class="built_in">CGPointMake</span>(<span class="number">10</span>, <span class="built_in">CGRectGetMaxY</span>(imageView.frame) + <span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIImageView</span> *maskImage = [[<span class="built_in">UIImageView</span> alloc] initWithFrame:imageView1.bounds];</span><br><span class="line">maskImage.image = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"gray_green"</span>];</span><br><span class="line">imageView1.maskView = maskImage;</span><br><span class="line">[<span class="keyword">self</span>.view addSubview:imageView1];</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIImageView</span> *imageView2 = [[<span class="built_in">UIImageView</span> alloc] initWithImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"head"</span>]];</span><br><span class="line">imageView2.alpha = <span class="number">0.5</span>;</span><br><span class="line">imageView2.origin = <span class="built_in">CGPointMake</span>(<span class="number">10</span>, <span class="built_in">CGRectGetMaxY</span>(imageView1.frame) + <span class="number">20</span>);</span><br><span class="line">[<span class="keyword">self</span>.view addSubview:imageView2];</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/04/13/maskView详解及基本使用/5.png" alt="效果图"></p>
+
     </div>
 
     
@@ -444,23 +463,14 @@ U2FsdGVkX1+dmjxoxYZiPrIU2X9KMn3XZwYDzpr0I/f4ZOTdIxnB6c2OdGvzFSpmYQPrvQnFMp88vu0w
       
 
       <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/日常/" rel="tag"># 日常</a>
-            
-          </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/08/31/iPhone-A12芯片录制编码解码失败问题/" rel="next" title="iPhone A12芯片录制编码解码失败问题">
-                  <i class="fa fa-chevron-left"></i> iPhone A12芯片录制编码解码失败问题
+                <a href="/2021/04/13/协议和-NSProxy-实现多继承/" rel="next" title="协议和 NSProxy 实现多继承">
+                  <i class="fa fa-chevron-left"></i> 协议和 NSProxy 实现多继承
                 </a>
               
             </div>
@@ -468,10 +478,6 @@ U2FsdGVkX1+dmjxoxYZiPrIU2X9KMn3XZwYDzpr0I/f4ZOTdIxnB6c2OdGvzFSpmYQPrvQnFMp88vu0w
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/02/iOS13-自定义返回键位置问题/" rel="prev" title="iOS13 自定义返回键位置问题">
-                  iOS13 自定义返回键位置问题 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
