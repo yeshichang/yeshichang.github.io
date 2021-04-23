@@ -59,19 +59,23 @@
   };
 </script>
 
-  <meta name="description" content="一、JSPatch热更新时，从服务器拉去js脚本。理论上可以修改和新建所有的模块，但是不建议这样做。建议 用来做紧急的小需求和 修复严重的线上bug。二、lua脚本比如： wax。热更新时，从服务器拉去lua脚本。游戏开发经常用到。三、Weex跨平台，一套代码，iOS、Android都可以运行。用前端语法实现原生效果。比React Native更好用。">
-<meta name="keywords" content="热更新">
+  <meta name="description" content="动画方式动画方式有2D移动。对于CABasicAnimation类：123//2D移动CABasicAnimation* basicAnimation;basicAnimation = [CABasicAnimation animationWithKeyPath:@&amp;quot;position.y&amp;quot;];">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS八种更新方式">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/iOS八种更新方式/index.html">
+<meta property="og:title" content="CAAnimation 的属性（动画）">
+<meta property="og:url" content="http://yoursite.com/2021/04/23/CAAnimation-的属性（动画）/index.html">
 <meta property="og:site_name" content="小子伊">
-<meta property="og:description" content="一、JSPatch热更新时，从服务器拉去js脚本。理论上可以修改和新建所有的模块，但是不建议这样做。建议 用来做紧急的小需求和 修复严重的线上bug。二、lua脚本比如： wax。热更新时，从服务器拉去lua脚本。游戏开发经常用到。三、Weex跨平台，一套代码，iOS、Android都可以运行。用前端语法实现原生效果。比React Native更好用。">
+<meta property="og:description" content="动画方式动画方式有2D移动。对于CABasicAnimation类：123//2D移动CABasicAnimation* basicAnimation;basicAnimation = [CABasicAnimation animationWithKeyPath:@&amp;quot;position.y&amp;quot;];">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-29T09:55:25.329Z">
+<meta property="og:image" content="http://yoursite.com/2021/04/23/CAAnimation-的属性（动画）/1.png">
+<meta property="og:image" content="http://yoursite.com/2021/04/23/CAAnimation-的属性（动画）/2.gif">
+<meta property="og:image" content="http://yoursite.com/2021/04/23/CAAnimation-的属性（动画）/3.gif">
+<meta property="og:image" content="http://yoursite.com/2021/04/23/CAAnimation-的属性（动画）/4.gif">
+<meta property="og:updated_time" content="2021-04-23T09:00:44.432Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS八种更新方式">
-<meta name="twitter:description" content="一、JSPatch热更新时，从服务器拉去js脚本。理论上可以修改和新建所有的模块，但是不建议这样做。建议 用来做紧急的小需求和 修复严重的线上bug。二、lua脚本比如： wax。热更新时，从服务器拉去lua脚本。游戏开发经常用到。三、Weex跨平台，一套代码，iOS、Android都可以运行。用前端语法实现原生效果。比React Native更好用。">
-  <link rel="canonical" href="http://yoursite.com/2019/07/12/iOS八种更新方式/">
+<meta name="twitter:title" content="CAAnimation 的属性（动画）">
+<meta name="twitter:description" content="动画方式动画方式有2D移动。对于CABasicAnimation类：123//2D移动CABasicAnimation* basicAnimation;basicAnimation = [CABasicAnimation animationWithKeyPath:@&amp;quot;position.y&amp;quot;];">
+<meta name="twitter:image" content="http://yoursite.com/2021/04/23/CAAnimation-的属性（动画）/1.png">
+  <link rel="canonical" href="http://yoursite.com/2021/04/23/CAAnimation-的属性（动画）/">
 
 
 <script id="page-configurations">
@@ -85,7 +89,7 @@
   };
 </script>
 
-  <title>iOS八种更新方式 | 小子伊</title>
+  <title>CAAnimation 的属性（动画） | 小子伊</title>
   
 
 
@@ -282,7 +286,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/iOS八种更新方式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/23/CAAnimation-的属性（动画）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="叶世昌">
@@ -294,7 +298,7 @@
       <meta itemprop="name" content="小子伊">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">iOS八种更新方式
+        <h1 class="post-title" itemprop="name headline">CAAnimation 的属性（动画）
 
           
         </h1>
@@ -310,19 +314,11 @@
                 
               
 
-              <time title="创建时间：2019-07-12 17:30:13" itemprop="dateCreated datePublished" datetime="2019-07-12T17:30:13+08:00">2019-07-12</time>
+              <time title="创建时间：2021-04-23 16:48:44 / 修改时间：17:00:44" itemprop="dateCreated datePublished" datetime="2021-04-23T16:48:44+08:00">2021-04-23</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-29 17:55:25" itemprop="dateModified" datetime="2019-08-29T17:55:25+08:00">2019-08-29</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -358,7 +354,7 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/07/12/iOS八种更新方式/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/07/12/iOS八种更新方式/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2021/04/23/CAAnimation-的属性（动画）/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2021/04/23/CAAnimation-的属性（动画）/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -370,7 +366,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>800</span>
+              <span>1.8k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -380,7 +376,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
           
 
@@ -393,23 +389,46 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="一、JSPatch"><a href="#一、JSPatch" class="headerlink" title="一、JSPatch"></a>一、JSPatch</h3><p>热更新时，从服务器拉去js脚本。理论上可以修改和新建所有的模块，但是不建议这样做。</p><p>建议 用来做紧急的小需求和 修复严重的线上bug。</p><h3 id="二、lua脚本"><a href="#二、lua脚本" class="headerlink" title="二、lua脚本"></a>二、lua脚本</h3><p>比如： wax。热更新时，从服务器拉去lua脚本。游戏开发经常用到。</p><h3 id="三、Weex"><a href="#三、Weex" class="headerlink" title="三、Weex"></a>三、Weex</h3><p>跨平台，一套代码，iOS、Android都可以运行。用前端语法实现原生效果。比React Native更好用。</p><a id="more"></a>
+        <h4 id="动画方式"><a href="#动画方式" class="headerlink" title="动画方式"></a>动画方式</h4><h5 id="动画方式有2D移动。"><a href="#动画方式有2D移动。" class="headerlink" title="动画方式有2D移动。"></a>动画方式有2D移动。</h5><p>对于CABasicAnimation类：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//2D移动</span><br><span class="line">CABasicAnimation* basicAnimation;</span><br><span class="line">basicAnimation = [CABasicAnimation animationWithKeyPath:@&quot;position.y&quot;];</span><br></pre></td></tr></table></figure><a id="more"></a>
 
 
+<p>以上代码表示沿着竖直方向移动。同理，将y换成x就表示沿着水平方向移动。</p>
+<h5 id="3D旋转"><a href="#3D旋转" class="headerlink" title="3D旋转"></a>3D旋转</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//3D旋转</span><br><span class="line">CABasicAnimation* basicAnimation;</span><br><span class="line">basicAnimation = [CABasicAnimation animationWithKeyPath:@&quot;transform.rotation.y&quot;];</span><br></pre></td></tr></table></figure>
 
-<p>weex基于vue.js，ReactNative使用React。</p>
-<p>ReactNative安装配置麻烦。 weex安装cli之后就可以使用。</p>
-<p>react模板JSX有一定的学习成本，vue和常用的web开发类似，模板是普通的html，数据绑定用mustache风格，样式直接使用css。</p>
-<p>淘宝干的漂亮，中国在编码的实力越来越牛叉了。威武！！！ </p>
-<h3 id="四、React-Native"><a href="#四、React-Native" class="headerlink" title="四、React Native"></a>四、React Native</h3><p>不像Weex能一套代码多端运行，需要自己分别做修改。</p>
-<p>React Native 可以动态添加业务模块，但无法做到修改原生OC代码。</p>
-<p>JSPatch、lua 配合React Native可以让一个原生APP时刻处于可扩展可修改的状态。</p>
-<h3 id="五、Hybrid"><a href="#五、Hybrid" class="headerlink" title="五、Hybrid"></a>五、Hybrid</h3><p>像PhoneGap之类的框架, 基本概念和web差不多, 通过更新js/html来实现动态化，没有原生的效果流畅。</p>
-<h3 id="六、动态库"><a href="#六、动态库" class="headerlink" title="六、动态库"></a>六、动态库</h3><p>可以做demo用，真实使用的时候会被苹果禁止。</p>
-<p>因为 打包发到AppStore的ipa安装包 里的每个动态库 都有唯一的编码，iOS系统会进行验证，所以动态通过网络获取 新的动态库 也用不了。</p>
-<h3 id="七、rollout-io"><a href="#七、rollout-io" class="headerlink" title="七、rollout.io"></a>七、rollout.io</h3><p>Rollout紧急修复线上bug。后端有相关的管理页面。因为是国外的网站，然后呢，要FQ才能使用。</p>
-<h3 id="八、DynamicCocoa"><a href="#八、DynamicCocoa" class="headerlink" title="八、DynamicCocoa"></a>八、DynamicCocoa</h3><p>滴滴iOS的一个框架，准备在2017年初开源，与JSPatch比更加智能化，用OC在XCode中写完代码，用工具可以自动生成可以更新的js文件。</p>
-<p><a href="http://www.cnblogs.com/dahe007/p/6253204.html" target="_blank" rel="noopener">转自 iOS热更新-8种实现方式</a></p>
+<p>以上代码表示以y轴为对称轴进行旋转。同理，还有以x轴和z轴为对称轴进行旋转。<br>三维空间中的x,y,z方向如下图所示，其中z的方向和屏幕垂直：</p>
+<p><img src="/2021/04/23/CAAnimation-的属性（动画）/1.png" alt="三维空间中的x,y,z方向"></p>
+<p>x,y,z方向的动画效果如下：</p>
+<p><img src="/2021/04/23/CAAnimation-的属性（动画）/2.gif" alt="transform.rotation.x的旋转效果"></p>
+<p><img src="/2021/04/23/CAAnimation-的属性（动画）/3.gif" alt="transform.rotation.y的旋转效果"></p>
+<p><img src="/2021/04/23/CAAnimation-的属性（动画）/4.gif" alt="transform.rotation.z的旋转效果"></p>
+<h5 id="fromValue和toValue"><a href="#fromValue和toValue" class="headerlink" title="fromValue和toValue"></a>fromValue和toValue</h5><p>fromValue表示动画的起始位置</p>
+<p>toValue表示动画的结束位置</p>
+<h5 id="duration"><a href="#duration" class="headerlink" title="duration"></a>duration</h5><p>duration表示一次动画持续的时间</p>
+<h5 id="repeatCount"><a href="#repeatCount" class="headerlink" title="repeatCount"></a>repeatCount</h5><p>repeatCount表示动画的重复次数</p>
+<h5 id="cumulative"><a href="#cumulative" class="headerlink" title="cumulative"></a>cumulative</h5><p>cumulative表示动画的位置是否要进行累加。</p>
+<p>当repeatCount大于1，而且cumulative为YES的时候：第n+1次动画的起始位置的值，就是第n次动画结束时的位置加上第n+1次动画的fromValue。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">basicAnimation = [CABasicAnimation animationWithKeyPath:@&quot;position.y&quot;];</span><br><span class="line">basicAnimation.fromValue = @200;</span><br><span class="line">basicAnimation.toValue = @250;</span><br><span class="line">basicAnimation.cumulative = YES;</span><br><span class="line">basicAnimation.repeatCount = 2;</span><br></pre></td></tr></table></figure>
+
+<p>此时，第1次动画，起始位置是纵坐标为200处；第2次动画，起始位置的纵坐标就变为450。</p>
+<h5 id="beginTime"><a href="#beginTime" class="headerlink" title="beginTime"></a>beginTime</h5><p>beginTime用于设置动画的开始时间，也可以用来设置动画的延时。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">basicAnimation.beginTime = CACurrentMediaTime()+3;</span><br><span class="line">//表示延时3秒钟开始动画</span><br></pre></td></tr></table></figure>
+
+<h5 id="fillMode"><a href="#fillMode" class="headerlink" title="fillMode"></a>fillMode</h5><p>用来设置动画之前或者之后的状态，有4种选择：</p>
+<ul>
+<li><p>kCAFillModeForwards：表示动画结束之后，保持状态不变</p>
+</li>
+<li><p>kCAFillModeBackwards：表示在动画开始之前，只要layer被加入了一个动画，即使动画还没有开始（beginTime属性设置了延时），layer也会马上进入动画状态。有一个fromValue的属性，此时layer会马上进入fromValue所在的位置。</p>
+</li>
+<li><p>kCAFillModeBoth：同时有kCAFillModeForwards和kCAFillModeBackwards的效果。</p>
+</li>
+<li><p>kCAFillModeRemoved：表示动画结束之后，恢复到动画之前的状态。效果和kCAFillModeForwards正好相反。</p>
+</li>
+</ul>
+<blockquote>
+<p>kCAFillModeBackwards的效果：假设一个layer开始的时候纵坐标为0，动画方式为position.y，fromValu为200，toValue为300，beginTime为延时3秒钟。如果fillMode设置为kCAFillModeBackwards，那么这个layer一旦添加了这个动画效果，马上就会下移200，等待3秒钟之后，再开始动画。如果没有设置kCAFillModeBackwards，那么在添加了动画效果之后，这个layer会在纵坐标为0的地方等待3秒钟，然后瞬间下移200，再开始动画。</p>
+</blockquote>
+<h5 id="removedOnCompletion"><a href="#removedOnCompletion" class="headerlink" title="removedOnCompletion"></a>removedOnCompletion</h5><p>removedOnCompletion表示动画结束之后，是否会回到动画开始之前的状态，默认情况下是YES。</p>
+<p>如果想要将动画效果设置成，动画结束之后，保持状态不变，不但removedOnCompletion要设置成NO，fillMode也必须设置成kCAFillModeForwards。（经测试，仅仅设置其中的一个条件，动画结束之后，还是会恢复原状）</p>
 
     </div>
 
@@ -449,30 +468,21 @@
       
 
       <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/热更新/" rel="tag"># 热更新</a>
-            
-          </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
+                <a href="/2021/04/22/Mac-OSX-沒有的-rename，用-brew-抓回來～/" rel="next" title="Mac OSX 沒有的 rename，用 brew 抓回來～">
+                  <i class="fa fa-chevron-left"></i> Mac OSX 沒有的 rename，用 brew 抓回來～
+                </a>
+              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/07/12/iOS-ImageView-contentMode-图片填充模式/" rel="prev" title="iOS ImageView contentMode 图片填充模式">
-                  iOS ImageView contentMode 图片填充模式 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -524,7 +534,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、JSPatch"><span class="nav-number">1.</span> <span class="nav-text">一、JSPatch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、lua脚本"><span class="nav-number">2.</span> <span class="nav-text">二、lua脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Weex"><span class="nav-number">3.</span> <span class="nav-text">三、Weex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、React-Native"><span class="nav-number">4.</span> <span class="nav-text">四、React Native</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、Hybrid"><span class="nav-number">5.</span> <span class="nav-text">五、Hybrid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、动态库"><span class="nav-number">6.</span> <span class="nav-text">六、动态库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、rollout-io"><span class="nav-number">7.</span> <span class="nav-text">七、rollout.io</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、DynamicCocoa"><span class="nav-number">8.</span> <span class="nav-text">八、DynamicCocoa</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#动画方式"><span class="nav-number">1.</span> <span class="nav-text">动画方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#动画方式有2D移动。"><span class="nav-number">1.1.</span> <span class="nav-text">动画方式有2D移动。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3D旋转"><span class="nav-number">1.2.</span> <span class="nav-text">3D旋转</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fromValue和toValue"><span class="nav-number">1.3.</span> <span class="nav-text">fromValue和toValue</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#duration"><span class="nav-number">1.4.</span> <span class="nav-text">duration</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#repeatCount"><span class="nav-number">1.5.</span> <span class="nav-text">repeatCount</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cumulative"><span class="nav-number">1.6.</span> <span class="nav-text">cumulative</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#beginTime"><span class="nav-number">1.7.</span> <span class="nav-text">beginTime</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fillMode"><span class="nav-number">1.8.</span> <span class="nav-text">fillMode</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#removedOnCompletion"><span class="nav-number">1.9.</span> <span class="nav-text">removedOnCompletion</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
