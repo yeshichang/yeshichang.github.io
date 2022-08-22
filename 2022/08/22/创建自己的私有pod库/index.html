@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+<script src="/js/src/photoswipe.min.js?v="></script>
+<script src="/js/src/photoswipe-ui-default.min.js?v="></script>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="步骤一：创建私有的pod索引仓库： 在公司的git服务器上创建私有远程索引仓库。克隆地址。 如：http://gitlab.yuwantech.com/clientgroup/ioslibrarygroup/jhchainableanimationsspec 新建pod spec索引仓库（将私有的远程仓库copy到本地）。命令如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创建自己的私有pod库">
+<meta property="og:url" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/index.html">
+<meta property="og:site_name" content="小子伊">
+<meta property="og:description" content="步骤一：创建私有的pod索引仓库： 在公司的git服务器上创建私有远程索引仓库。克隆地址。 如：http://gitlab.yuwantech.com/clientgroup/ioslibrarygroup/jhchainableanimationsspec 新建pod spec索引仓库（将私有的远程仓库copy到本地）。命令如下：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10000.png">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10001.png">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10002.png">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10003.png">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10004.png">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10005.png">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10006.png">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10007.png">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10008.png">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10009.png">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10010.png">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10011.png">
+<meta property="og:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10012.png">
+<meta property="og:updated_time" content="2022-08-22T09:01:28.610Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="创建自己的私有pod库">
+<meta name="twitter:description" content="步骤一：创建私有的pod索引仓库： 在公司的git服务器上创建私有远程索引仓库。克隆地址。 如：http://gitlab.yuwantech.com/clientgroup/ioslibrarygroup/jhchainableanimationsspec 新建pod spec索引仓库（将私有的远程仓库copy到本地）。命令如下：">
+<meta name="twitter:image" content="http://yoursite.com/2022/08/22/创建自己的私有pod库/10000.png">
+  <link rel="canonical" href="http://yoursite.com/2022/08/22/创建自己的私有pod库/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>创建自己的私有pod库 | 小子伊</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7d968c8927331f3ac7600bc9dc901735";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小子伊</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">工作求结果，生活求过程</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-commonweal">
+      
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/08/22/创建自己的私有pod库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="叶世昌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/20366232?s=400&u=8e155d779bac97dac00059826d8bae4df74eca58&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小子伊">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">创建自己的私有pod库
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2022-08-22 16:08:18 / 修改时间：17:01:28" itemprop="dateCreated datePublished" datetime="2022-08-22T16:08:18+08:00">2022-08-22</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/08/22/创建自己的私有pod库/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2022/08/22/创建自己的私有pod库/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>6.4k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>6 分钟</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="步骤一：创建私有的pod索引仓库："><a href="#步骤一：创建私有的pod索引仓库：" class="headerlink" title="步骤一：创建私有的pod索引仓库："></a>步骤一：创建私有的<strong>pod</strong>索引仓库：</h3><ol>
+<li>在公司的git服务器上创建私有远程索引仓库。克隆地址。</li>
+</ol><p>如：<a href="http://gitlab.yuwantech.com/clientgroup/ioslibrarygroup/jhchainableanimationsspec" target="_blank" rel="noopener">http://gitlab.yuwantech.com/clientgroup/ioslibrarygroup/jhchainableanimationsspec</a></p><ol start="2">
+<li>新建pod spec索引仓库（将私有的远程仓库copy到本地）。命令如下：</li>
+</ol><a id="more"></a>
+
+
+<p><strong>pod repo add LibraryPodSpecs <a href="http://gitlab.yuwantech.com/clientgroup/ioslibrarygroup/jhchainableanimationsspec" target="_blank" rel="noopener">http://gitlab.yuwantech.com/clientgroup/ioslibrarygroup/jhchainableanimationsspec</a></strong></p>
+<p><strong>LibraryPodSpecs</strong>：为pod spec索引仓库名称</p>
+<ol start="3">
+<li>执行完毕后，在目录：/Users/admin/.cocoapods/repos 下会多出来一个TestPodSpecs文件夹，可使用pod repo命令查看。如下：<br>至此，私有远程索引仓库LibraryPodSpecs生成完成</li>
+</ol>
+<h3 id="步骤二：创建私有组件库："><a href="#步骤二：创建私有组件库：" class="headerlink" title="步骤二：创建私有组件库："></a>步骤二：创建私有组件库：</h3><ol>
+<li><p>在公司的 git 服务器上面创建 组件 的 git 远程仓库，克隆地址是：<a href="http://gitlab.yuwantech.com/clientgroup/ioslibrarygroup/jhchainableanimations" target="_blank" rel="noopener">http://gitlab.yuwantech.com/clientgroup/ioslibrarygroup/jhchainableanimations</a></p>
+</li>
+<li><p>创建私有的pod组件库（如JHChainableAnimations动画组件），执行如下命令:<code>pod lib create JHChainableAnimations</code>。过程中需要填一些选项，按需选择即可。如下：</p>
+</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. 什么平台? iOS</span><br><span class="line"><span class="number">2</span>. 什么语言? ObjC</span><br><span class="line"><span class="number">3</span>. 是否集成Demo为自己的模块库? Yes</span><br><span class="line"><span class="number">4</span>. 是否集成测试框架? <span class="literal">None</span></span><br><span class="line"><span class="number">5</span>. 是否基于View的做测试? No</span><br><span class="line"><span class="number">6</span>. 工程类前缀? YW</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>删除ReplaceMe文件，将需要封装的文件（如网络组件相关文件）复制到PrivatePermissionTools/PrivatePermissionTools/Classes中。如下：将LeelenNetworkManager复制到Classes中。（注意：需要cd到Example文件下 然后更新 pod update –no-repo-update）</p>
+</li>
+<li><p>修改 <strong>JHChainableAnimations.podspec</strong> 文件如下：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line"># Be sure to run `pod lib lint JHChainableAnimations.podspec&apos; to ensure this is a</span><br><span class="line"># valid spec before submitting.</span><br><span class="line">#</span><br><span class="line"># Any lines starting with a # are optional, but their use is encouraged</span><br><span class="line"># To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">Pod::Spec.new do |s|</span><br><span class="line">  s.name             = &apos;JHChainableAnimations&apos;</span><br><span class="line">  s.version          = &apos;1.0.1&apos;</span><br><span class="line">  s.summary          = &apos;A short description of JHChainableAnimations.&apos;</span><br><span class="line"></span><br><span class="line"># This description is used to generate tags and improve search results.</span><br><span class="line">#   * Think: What does it do? Why did you write it? What is the focus?</span><br><span class="line">#   * Try to keep it short, snappy and to the point.</span><br><span class="line">#   * Write the description between the DESC delimiters below.</span><br><span class="line">#   * Finally, don&apos;t worry about the indent, CocoaPods strips it!</span><br><span class="line"></span><br><span class="line">  s.description      = &lt;&lt;-DESC</span><br><span class="line">TODO: Add long description of the pod here.</span><br><span class="line">                       DESC</span><br><span class="line"></span><br><span class="line">  s.homepage         = &apos;http://58.132.214.153:10088/clientgroup/ioslibrarygroup/jhchainableanimations&apos;</span><br><span class="line">  # s.screenshots     = &apos;www.example.com/screenshots_1&apos;, &apos;www.example.com/screenshots_2&apos;</span><br><span class="line">  s.license          = &#123; :type =&gt; &apos;MIT&apos;, :file =&gt; &apos;LICENSE&apos; &#125;</span><br><span class="line">  s.author           = &#123; &apos;ysc&apos; =&gt; &apos;15238280098@163.com&apos; &#125;</span><br><span class="line">  s.source           = &#123; :git =&gt; &apos;http://gitlab.yuwantech.com/clientgroup/ioslibrarygroup/jhchainableanimations.git&apos;, :tag =&gt; s.version.to_s &#125;</span><br><span class="line">  # s.social_media_url = &apos;https://twitter.com/&lt;TWITTER_USERNAME&gt;&apos;</span><br><span class="line"></span><br><span class="line">  s.ios.deployment_target = &apos;9.0&apos;</span><br><span class="line"></span><br><span class="line">  s.source_files = &apos;JHChainableAnimations/Classes/**/*&apos;</span><br><span class="line">  </span><br><span class="line">  # s.resource_bundles = &#123;</span><br><span class="line">  #   &apos;JHChainableAnimations&apos; =&gt; [&apos;JHChainableAnimations/Assets/*.png&apos;]</span><br><span class="line">  # &#125;</span><br><span class="line"></span><br><span class="line">  # s.public_header_files = &apos;Pod/Classes/**/*.h&apos;</span><br><span class="line">  # s.frameworks = &apos;UIKit&apos;, &apos;MapKit&apos;</span><br><span class="line">  # s.dependency &apos;AFNetworking&apos;, &apos;~&gt; 2.3&apos;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>校验本地索引文件 <strong>JHChainableAnimations.podspec</strong></li>
+</ol>
+<p>cd到PrivatePermissionTools.podspec所在文件夹下，执行pod lib lint –allow-warnings，该命令是检查本地索引文件是否符合推送规则。成功了会打印PrivatePermissionTools.podspec passed validation。如下：</p>
+<p><img src="/2022/08/22/创建自己的私有pod库/10000.png" alt="10000"></p>
+<p>pod lib lint参数解析：</p>
+<p>–sources：需要引⽤的spec，默认只依赖master，如果当前pod依赖了私有库，需要将其对应的spec包含进来，不然会报找不到对应库的问题。参数可以是本地spec的名称，也可以是git地址。</p>
+<p>–allow-warnings：有警告会通过不了，如果警告是⽆关紧要的，可以加上，让检测通过。</p>
+<p>–verbose：打印详细的检验过程</p>
+<p>–use-libraries：⼯程或者依赖⾥⾯了静态库(*.a⽂件)或者是framework</p>
+<p>备注：</p>
+<p>pod lib lint 表示在本地校验索引文件</p>
+<p>pod spec lint 表示在本地和远程都校验索引文件</p>
+<p>6、将<strong>JHChainableAnimations</strong>本地组件库与远程的仓库<strong>git</strong>关联起来</p>
+<p><img src="/2022/08/22/创建自己的私有pod库/10001.png" alt="10001"></p>
+<ol start="7">
+<li>上传 JHChainableAnimations.podspec 索引文件到我们的私有远程索引仓库 LibraryPodSpecs，命令如下：（进入到JHChainableAnimations.podspec目录）</li>
+</ol>
+<p><code>pod repo push LibraryPodSpecs JHChainableAnimations.podspec --allow-warnings</code></p>
+<p>上面命令对 JHChainableAnimations.podspec 文件做了两个操作：一个是将其推送到私有的远程索引仓库，可以去公司的 git 上面 LibraryPodSpecs 索引仓库中查看；另一个是将其 copy 到私有的本地索引仓库，这个可以去目录：/Users/admin/.cocoapods/repos/TestPodSpecs 下查看到。</p>
+<p>至此私有的组件库JHChainableAnimations就创建完成了，可以在终端执行 pod search JHChainableAnimations来查询它。</p>
+<p>使用:</p>
+<p><code>pod &#39;JHChainableAnimations&#39;, :git =&gt; &quot;http://gitlab.yuwantech.com/clientgroup/ioslibrarygroup/jhchainableanimations.git&quot;, :tag =&gt; &#39;1.0.1&#39;</code></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><p>操作的时候，先cd到对应的文件夹下</p>
+</li>
+<li><p>注意操作顺序</p>
+<ul>
+<li>在develop分支开发、修改JHChainableAnimations代码，修改   JHChainableAnimations.podspec版本号，提交。</li>
+<li>将develop分支合并到master。</li>
+<li>在master打tag（如:1.0.1），注意这边的tag应与 JHChainableAnimations.podspec中的s.version 版本号一致。</li>
+<li>远程私有库的更新:(cd 到本地仓库的位置，执行以下操作)</li>
+</ul>
+</li>
+</ul>
+<h4 id="一、更新远程仓库"><a href="#一、更新远程仓库" class="headerlink" title="一、更新远程仓库"></a>一、更新远程仓库</h4><ol>
+<li>代码更新</li>
+</ol>
+<p><img src="/2022/08/22/创建自己的私有pod库/10002.png" alt="10002"></p>
+<ol start="2">
+<li>版本更新<strong>(</strong>版本更新 这一步非常重要，为更新索引库做准备<strong>)</strong></li>
+</ol>
+<p><img src="/2022/08/22/创建自己的私有pod库/10003.png" alt="10003"></p>
+<p>版本升级</p>
+<p>查看远程仓库，标签数已经有2个了，点进去就可以看到0.2.0，这里我们就不去看了</p>
+<p><img src="/2022/08/22/创建自己的私有pod库/10004.png" alt="10004"></p>
+<h4 id="二、修改描述文件并更新索引库"><a href="#二、修改描述文件并更新索引库" class="headerlink" title="二、修改描述文件并更新索引库"></a>二、修改描述文件并更新索引库</h4><ol>
+<li>修改<strong>Sepc</strong></li>
+</ol>
+<p><img src="/2022/08/22/创建自己的私有pod库/10005.png" alt="10005"></p>
+<p>2.验证远程<strong>Spec</strong></p>
+<p>cd到xxxx.podspec所在文件夹下，执行pod lib lint –allow-warnings</p>
+<p>3.更新索引库</p>
+<p>pod repo push 索引库名称 xxx.podspec –allow-warnings</p>
+<p><img src="/2022/08/22/创建自己的私有pod库/10006.png" alt="10006"></p>
+<p>依赖第三方库:</p>
+<p>当我们的私有库需要依赖其它第三方才可以正常使用时，我们就需要在spec文件中开启依赖，例如下面所示代码，表明当前仓库需要依赖AFN和SDWebImage</p>
+<p>s.dependency ‘AFNetworking’, ‘~&gt; 3.2.0’</p>
+<p>s.dependency ‘SDWebImage’, ‘~&gt; 4.3.3’</p>
+<p>问题：但是这里存在一个问题，如果来了一位新的小伙伴，他所负责的部分只需要LXFBase下的Category，而LXFBase下的Cache才需要依赖SDWebImage，此时他若是pod一整个LXFBase岂不是平白无故安装了第三方依赖库，那应该怎么做呢？</p>
+<p>答案：方案就是可以通过子库Subspecs来解决因需要一个小小的工具而依赖整个基础组件的问题</p>
+<p>子库Subspecs：</p>
+<p>什么是Subspecs？这里我们可以搜索一下SDWebImage。</p>
+<p><img src="/2022/08/22/创建自己的私有pod库/10007.png" alt="10007"></p>
+<p>Subspecs：</p>
+<p>可以看到，如果我们只需要用到SDWebImage中的GIF功能，那么并不需要将整个SDWebImage都下载下来，在Podfile中将pod ‘SDWebImage’ 改为 pod SDWebImage/GIF即可单独使用这一功能</p>
+<p>那接下来我们就来看看怎么描述一个子库吧</p>
+<p>子库格式：</p>
+<p><img src="/2022/08/22/创建自己的私有pod库/10008.png" alt="10008"></p>
+<p>因为这里已经分离出子库了，所以s.source_files和s.dependency就不能这么使用了，需要我们在子库里分别指定，所以我们直接把原来的s.source_files和s.dependency都注释掉。写法参考如下：</p>
+<p><img src="/2022/08/22/创建自己的私有pod库/10009.png" alt="10009"></p>
+<p>修改后再按之前的步骤更新索引库和组件库就可以了。</p>
+<p><strong>ps:</strong> 在添加第三方依赖描述后做验证或者上传操作可能会很慢，因为它在克隆第三方库如<strong>SDWebImage</strong>，有兴趣的可以在命令后面加入<strong>–verbose</strong>来查看详情情况</p>
+<p><img src="/2022/08/22/创建自己的私有pod库/10010.png" alt="10010"></p>
+<p>使用子库：</p>
+<p><img src="/2022/08/22/创建自己的私有pod库/10011.png" alt="10011"></p>
+<p><strong>组件库中带有图片资源:</strong></p>
+<ol>
+<li><p>将LoginImage文件夹放入/LeelenNetwork/Assets中，其中LoginImage文件夹内有<a href="mailto:login_logo@2x.png" target="_blank" rel="noopener">login_logo@2x.png</a>图片；</p>
+</li>
+<li><p>修改LeelenNetwork.podspec索引文件</p>
+</li>
+</ol>
+<p><img src="/2022/08/22/创建自己的私有pod库/10012.png" alt="10012"></p>
+<ol start="3">
+<li><p>修改完spec索引文件之后，执行pod lib lint –allow-warnings检查本地索引文件是否符合推送规则。校验没问题后，SourceTree提交代码，打tag（tag注意与LeelenNetwork.podspec文件内的s.version一致）。执行pod repo push LeelenIotPodSpecs LeelenNetwork.podspec –allow-warnings操作，上传 LeelenNetwork.podspec 索引文件到我们的私有远程索引仓库 LeelenIotPodSpecs。</p>
+</li>
+<li><p>修改工程中的Podfile文件，cd到工程Podfile文件所在位置，执行pod install</p>
+</li>
+<li><p>pod install成功后，可以看到工程中多了一个Resources文件夹，里面有<a href="mailto:login_logo@2x.png" target="_blank" rel="noopener">login_logo@2x.png</a>图片，路径如下：Pods/LeelenNetwork/LeelenNetwork/Assets/LoginImage/login_logo@2x.png。以及Products文件夹下多了一个NetworkLog.bundle，查看包内容，发现里面也有<a href="mailto:login_logo@2x.png" target="_blank" rel="noopener">login_logo@2x.png</a>图片。</p>
+</li>
+<li><p>使用时，先拿到最外面的bundle，然后再去找下面指定名字的bundle对象，再搜索具体资源。如下：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NSBundle * currentBundle = [NSBundle bundleForClass:self.class];</span><br><span class="line"></span><br><span class="line">NSURL * bundleURL = [currentBundle URLForResource:@&quot;NetworkLog&quot; withExtension:@&quot;bundle&quot;];</span><br><span class="line"></span><br><span class="line">NSBundle * resourceBundle = [NSBundle bundleWithURL:bundleURL];</span><br><span class="line"></span><br><span class="line">UIImage * logoIcon = [UIImage imageNamed:@&quot;login_logo&quot; inBundle:resourceBundle compatibleWithTraitCollection:nil];</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="https://github.com/yeshichang/Times_Test/blob/master/Source/wechat_public_number.jpg?raw=true" alt="叶世昌 wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      
+        
+      
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="https://github.com/yeshichang/Times_Test/blob/master/Source/wechat.jpg?raw=true" alt="叶世昌 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="https://github.com/yeshichang/Times_Test/blob/master/Source/alipay.jpg?raw=true" alt="叶世昌 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2021/05/13/UIViewAnimationOptions类型/" rel="next" title="UIViewAnimationOptions类型">
+                  <i class="fa fa-chevron-left"></i> UIViewAnimationOptions类型
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤一：创建私有的pod索引仓库："><span class="nav-number">1.</span> <span class="nav-text">步骤一：创建私有的pod索引仓库：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤二：创建私有组件库："><span class="nav-number">2.</span> <span class="nav-text">步骤二：创建私有组件库：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">3.</span> <span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、更新远程仓库"><span class="nav-number">3.1.</span> <span class="nav-text">一、更新远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、修改描述文件并更新索引库"><span class="nav-number">3.2.</span> <span class="nav-text">二、修改描述文件并更新索引库</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="https://avatars.githubusercontent.com/u/20366232?s=400&u=8e155d779bac97dac00059826d8bae4df74eca58&v=4"
+      alt="叶世昌">
+  <p class="site-author-name" itemprop="name">叶世昌</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/yeshichang" title="GitHub &rarr; https://github.com/yeshichang" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:yeshichang1991@gmail.com" title="E-Mail &rarr; mailto:yeshichang1991@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/u/5796497329" title="Weibo &rarr; https://weibo.com/u/5796497329" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://twitter.com/@_yeshichang" title="Twitter &rarr; https://twitter.com/@_yeshichang" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">叶世昌</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">224k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:24</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="http://yeshichang.cn" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'wIiMo2FQF3PaFyTshGP7o4or-gzGzoHsz',
+    appKey: 'UzFx9cFfxYI75cpBEaAJBShb',
+    placeholder: 'ヾﾉ≧∀≦)o 来呀！快活呀！~',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+  
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>
